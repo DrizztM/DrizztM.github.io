@@ -2,8 +2,8 @@
 layout: post
 title: 2015年老婆生日
 category: 相册
-tags: 
-keywords: 
+tags: 相册
+keywords: photos
 description: 
 ---
 
