@@ -16,8 +16,8 @@ url: http://blog.drizzt.cn
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/logo.jpg
-favicon: /public/img/logo.jpg
+gavatar: /public/img/logo.png
+favicon: /public/img/logo.png
 
 # disqus 设置
 disqus:
