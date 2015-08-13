@@ -65,6 +65,17 @@ $(document).ready(function() {
     $('.aside3').scrollTop(0);
     contentEffects();
   });
+  $('body').on('click', '.show-commend', function(){
+	  var duoshuoQuery = {short_name:duoshuo_shortname};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+  });
   contentEffects();
 });
 function contentEffects(){

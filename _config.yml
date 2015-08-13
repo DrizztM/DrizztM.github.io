@@ -19,6 +19,10 @@ rss_url: /pages/atom.xml
 gavatar: /public/img/logo.png
 favicon: /public/img/logo.png
 
+# 多说设置
+duoshuo:
+  shortname: drizzt
+
 # 主题设置，自动激活某个标签
 active: 相册
 
