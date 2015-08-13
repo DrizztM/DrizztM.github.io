@@ -65,9 +65,6 @@ $(document).ready(function() {
     $('.aside3').scrollTop(0);
     contentEffects();
   });
-  $('body').on('click', '.show-commend', function(){
-	  $('#duoshuo').style.display="block";
-  });
   contentEffects();
 });
 function contentEffects(){
