@@ -2,7 +2,7 @@
 layout: post
 title: 2015年老婆生日
 category: 相册
-tags: photos
+tags: 生日
 keywords: 
 description: 
 ---
