@@ -19,10 +19,6 @@ rss_url: /pages/atom.xml
 gavatar: /public/img/logo.png
 favicon: /public/img/logo.png
 
-# disqus 设置
-disqus:
-  shortname: drizztm
-
 # 主题设置，自动激活某个标签
 active: 相册
 
