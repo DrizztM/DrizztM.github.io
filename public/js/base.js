@@ -40,14 +40,6 @@ function content_click(is_show){
 }
 
 $(document).ready(function() {
-	var duoshuoQuery = {short_name:"drizzt"};
-	var ds = document.createElement('script');
-	ds.type = 'text/javascript';ds.async = true;
-	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-	ds.charset = 'UTF-8';
-	(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	
   /* 控制左侧 aside 的动作 */
   $("#nav_btn").on('click', function() {
     isClicked = $(this).data('clicked');
