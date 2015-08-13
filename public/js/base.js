@@ -66,6 +66,7 @@ $(document).ready(function() {
     contentEffects();
   });
   $('body').on('click', '.show-commend', function(){
+	  window.duoshuo_shortname = $('.show-commend').attr('name');
 	  var duoshuoQuery = {short_name:duoshuo_shortname};
 		(function() {
 			var ds = document.createElement('script');
