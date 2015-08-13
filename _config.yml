@@ -27,7 +27,7 @@ disqus:
 active: 相册
 
 # 首页除了最新文章外显示分类
-#cates: 
+cates: 
   - photos
 
 # 中文本地化
