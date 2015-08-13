@@ -1,69 +1,47 @@
-title:            Site Title
-description:      Describe your website here.
-disqus_shortname: hpstrtheme
-reading_time:     true
-words_per_minute: 200
-# Your site's domain goes here (eg: //mmistakes.github.io, http://mademistakes.com, etc)
-# When testing locally leave blank or use http://localhost:4000
-url:
+permalink: /:year/:month/:day/:title.html
+paginate: 10
+markdown: redcarpet
 
-# Owner/author information
-owner:
-  name:           Your Name
-  avatar:         avatar.jpg
-  bio:            "Your bio goes here. It shouldn't be super long but a good two sentences or two should suffice."
-  email:          you@email.com
-  # Social networking links used in footer. Update and remove as you like.
-  twitter:        
-  facebook:       
-  github:         
-  stackexchange:  
-  linkedin:       
-  instagram:      
-  flickr:         
-  tumblr:         
-  # google plus id, include the '+', eg +mmistakes
-  google_plus:    +yourid
+# 作者信息
+author: 
+  name: Anya Lin
+  email: lay.1010@hotmail.com
+  link: http://painterlin.com
+  weibo: http://weibo.com/orangeissweet
+  github: http://github.com/lay1010
+  music: http://site.douban.com/linanya
+  linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
 
-# Background image to be tiled on all pages
-background: 
+# 站点信息
+title: 林安亚的博客
+description: My personal blog
+url: http://painterlin.com
+rss_url: /pages/atom.xml
 
-# Analytics and webmaster tools stuff goes here
-google_analytics:   
-google_verify:      
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:         
+# gavatar头像及Favicon
+gavatar: /public/img/deer3.png
+favicon: /public/img/deer3.png
 
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
-future:      true
-highlighter: pygments
-markdown:    kramdown
-gems:
-  - jekyll-sitemap
-sass:
-  sass_dir: _sass
-  style: compressed
+# google analytics 设置
+ga:
+  id: UA-54262064-1 
+  url: painterlin.com
 
-# https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   /:categories/:title/
+# disqus 设置
+disqus:
+  shortname: painterlin
 
-# Amount of post to show on home page
-paginate: 5
+# 主题设置，自动激活某个标签
+active: 读书
 
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: true
+# 首页除了最新文章外显示分类
+cates: 
+  - Optimization
+  - LaTeX
 
-  coderay:
-    coderay_line_numbers: nil
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: class
-
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+# 中文本地化
+locals:
+  tags: 标签
+  about: 关于
+  newest: 最新文章
+  archive: 归档
