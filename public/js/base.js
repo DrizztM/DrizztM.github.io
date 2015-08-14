@@ -66,13 +66,17 @@ $(document).ready(function() {
     contentEffects();
   });
   $('body').on('click', '.show-commend', function(){
-	  alert($("#ds-thread").attr('id'));
-	  var el = document.createElement('div');//该div不需要设置class="ds-thread"
-	  el.setAttribute('data-thread-key', '{{ page.title }}');//必选参数
-	  el.setAttribute('data-url', '{{ page.url }}');//必选参数
-	  el.setAttribute('data-author-key', '{{ page.title }}');//可选参数
-	  DUOSHUO.EmbedThread(el);
-	  jQuery(container).append(el);
+	  if($("#ds-thread").attr('id')==ds-thread){
+		  var el = $("#ds-thread");
+		  e1.remove();
+	  }else{
+		  var el = document.createElement('div');//该div不需要设置class="ds-thread"
+		  el.setAttribute('data-thread-key', '{{ page.title }}');//必选参数
+		  el.setAttribute('data-url', '{{ page.url }}');//必选参数
+		  el.setAttribute('data-author-key', '{{ page.title }}');//可选参数
+		  DUOSHUO.EmbedThread(el);
+		  jQuery(container).append(el);
+	  }
   });
   contentEffects();
 });
