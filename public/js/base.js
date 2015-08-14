@@ -66,7 +66,7 @@ $(document).ready(function() {
     contentEffects();
   });
   $('body').on('click', '.show-commend', function(){
-	  if($("#ds-thread").attr('id')==ds-thread){
+	  if($("#ds-thread").attr('id')=="ds-thread"){
 		  var el = $("#ds-thread");
 		  e1.remove();
 	  }else{
