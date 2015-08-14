@@ -70,10 +70,13 @@ $(document).ready(function() {
 		  var el = $("#ds-thread");
 		  e1.remove();
 	  }else{
+		  window.duoshuoid = $('.show-commend').attr('name');
+		  window.duoshuotitle = $('.show-commend').attr('title');
+		  window.duoshuourl = $('.show-commend').attr('url');
 		  var el = document.createElement('div');//该div不需要设置class="ds-thread"
-		  el.setAttribute('data-thread-key', '{{ page.title }}');//必选参数
-		  el.setAttribute('data-url', '{{ page.url }}');//必选参数
-		  el.setAttribute('data-author-key', '{{ page.title }}');//可选参数
+		  el.setAttribute('data-thread-key', window.duoshuoid);//必选参数
+		  el.setAttribute('data-url',  window.duoshuourl);//必选参数
+		  el.setAttribute('data-title', window.duoshuotitle);//可选参数
 		  DUOSHUO.EmbedThread(el);
 		  jQuery(container).append(el);
 	  }
