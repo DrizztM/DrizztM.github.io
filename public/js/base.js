@@ -75,7 +75,7 @@ $(document).ready(function() {
 		  el.setAttribute('data-url',  window.duoshuourl);//必选参数
 		  el.setAttribute('data-title', window.duoshuotitle);//可选参数
 		  DUOSHUO.EmbedThread(el);
-		  jQuery(container).append(el);
+		  $("#duoshuo_thread").after(e1);
 	  }
   });
   contentEffects();
