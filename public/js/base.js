@@ -66,7 +66,7 @@ $(document).ready(function() {
     contentEffects();
   });
   $('body').on('click', '.show-commend', function(){
-	  if($("#ds-thread").attr('id')=='undefined'){
+	  if($("#ds-thread").attr('id')==undefined){
 		  window.duoshuoid = $('.show-commend').attr('name');
 		  window.duoshuotitle = $('.show-commend').attr('title');
 		  window.duoshuourl = $('.show-commend').attr('url');
