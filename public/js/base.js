@@ -66,7 +66,7 @@ $(document).ready(function() {
     contentEffects();
   });
   $('body').on('click', '.show-commend', function(){
-	  alert($("#duoshuodiv"));
+	  alert($("#duoshuodiv").attr('id'));
 	  var el = document.createElement('div');//该div不需要设置class="ds-thread"
 	  el.setAttribute('id','duoshuodiv');
 	  el.setAttribute('data-thread-key', '{{ page.title }}');//必选参数
