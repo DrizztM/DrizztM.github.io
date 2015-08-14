@@ -65,9 +65,6 @@ $(document).ready(function() {
     $('.aside3').scrollTop(0);
     contentEffects();
   });
-  if($("#ds-thread").attr('id')!=undefined){
-	  $("#ds-thread").remove();
-  }
   $('body').on('click', '.show-commend', function(){
 	  if($("#ds-thread").attr('id')==undefined){
 		  window.duoshuoid = $('.show-commend').attr('name');
