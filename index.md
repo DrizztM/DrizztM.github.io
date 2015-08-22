@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Welcome
+title: 欢迎
 ---
 
 ## 对博客的理解
