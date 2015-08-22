@@ -8,4 +8,4 @@ title: 欢迎
 
 ## 博客平台
 
-这个博客通过 [Jekyll](http://jekyllrb.com/) 生成，非常感谢 [闫肃的博客 ](http://yansu.org) 提供的模板。
+这个博客通过 [Jekyll](http://jekyllrb.com/) 生成，非常感谢 [闫肃的博客](http://yansu.org) 提供的模板。
