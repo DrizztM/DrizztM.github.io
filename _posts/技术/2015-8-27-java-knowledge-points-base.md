@@ -24,6 +24,12 @@ keywords: java
 
  - forword转发地址栏不发生变化。
  - redirect转发地址栏发生变化。
+ 
+- 基本上 Linux 的正统文件系统为 Ext2 ，该文件系统内的信息主要有：
+
+ - superblock：记录此 filesystem 的整体信息，包括inode/block的总量、使用量、剩余量， 以及文件系统的格式与相关信息等；
+ - inode：记录文件的属性，一个文件占用一个inode，同时记录此文件的数据所在的 block 号码；
+ - block：实际记录文件的内容，若文件太大时，会占用多个 block 。
 
 ## StringBuffer StringBuilder String 区别
 
