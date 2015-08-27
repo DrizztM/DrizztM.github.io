@@ -16,14 +16,12 @@ keywords: java
 ## Forword(请求转发)与Redirect(重定向)
 
 * 从数据共享上
-
- + forword是一个请求的延续，可以共享request的数据。
- + redirect开启一个新的请求，不可以共享request的数据。
++ forword是一个请求的延续，可以共享request的数据。
++ redirect开启一个新的请求，不可以共享request的数据。
 
 * 从地址栏
-
- + forword转发地址栏不发生变化。
- + redirect转发地址栏发生变化。
++ forword转发地址栏不发生变化。
++ redirect转发地址栏发生变化。
 
 ## StringBuffer StringBuilder String 区别
 
