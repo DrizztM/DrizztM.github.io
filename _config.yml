@@ -23,11 +23,6 @@ rss_url: /pages/atom.xml
 avatar:  /assets/img/logo.png
 favicon:  /assets/img/logo.png
 
-# google analytics 设置
-ga:
-  id: UA-54767140-1
-  url: yansu.org
-
 # disqus 设置
 disqus:
   shortname: drizztblog
