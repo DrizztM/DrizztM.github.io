@@ -40,7 +40,5 @@ keywords: java
  - List接口实现类有ArrayList,LinkedList,Vector。ArrayList和Vector是基于数组实现的,所以查询的时候速度快，而在进行增加和删除的时候速度较慢LinkedList是基于链式存储结构，所以在进行查询的时候速度较慢但在进行增加和删除的时候速度较快。又因为Vector是线程安全的，所以他和ArrayList相比而言，查询效率要低。
  - ArrayList是线程非安全的，因为没有同步方法。
  - LinkedList,也是线程不安全的，解决方法参照ArrayList。
- - 如何将ArrayList变成线程安全的：
-  - 1.使用synchronized关键字，这个大家应该都很熟悉了；
-  - 2.List list = Collections.synchronizedList(new ArrayList());
+ - 如何将ArrayList变成线程安全的：1.使用synchronized关键字，这个大家应该都很熟悉了；2.List list = Collections.synchronizedList(new ArrayList());
 
