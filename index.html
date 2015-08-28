@@ -1,0 +1,35 @@
+---
+layout: post
+title: 欢迎
+---
+
+<h2>个人简介</h2>
+<p style=font-size:18px>
+	<ul>
+		<li>1983年生人。</li>
+		<li>2006年毕业于长春理工大学，信息与计算科学专业。</li>
+		<li>2007年加入北漂一族，入职深圳海联讯（北京）科技股份有限公司，JAVA程序员一枚。</li>
+		<li>2011年7月16日结婚，妻子和我是同行。</li>
+		<li>2012年10月9日宝宝降生，小龙女。</li>
+		<li>2015年以技术合伙人身份加入创业公司。</li>
+		<li>My life goes on.</li>
+	</ul>
+</p>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{ site.locals.newest }}</div>
+      {% for post in paginator.posts %}
+        <a  href='{{ post.url }}' class="list-group-item pjaxlink clearfix">
+          {{post.title}}
+          <span class="badge">{{ post.date | date:"%Y年%m月%d日" }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+## 博客平台
+
+这个博客通过 [Jekyll](http://jekyllrb.com/) 生成，非常感谢 [闫肃的博客](http://yansu.org) 提供的模板。
