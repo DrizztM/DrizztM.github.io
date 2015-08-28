@@ -1,7 +1,7 @@
 ---
 layout: post
 title: java知识点——基础篇
-category: 技术
+category: 教学
 keywords: java
 ---
 
