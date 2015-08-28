@@ -26,10 +26,3 @@ favicon:  /assets/img/logo.png
 # disqus 设置
 disqus:
   shortname: drizztblog
-  
-# 中文本地化
-locals:
-  tags: 标签
-  about: 关于
-  newest: 最新文章
-  archive: 归档
