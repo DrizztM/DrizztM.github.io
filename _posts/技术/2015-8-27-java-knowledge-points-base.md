@@ -31,3 +31,12 @@ keywords: java
 - StringBuilder执行效率高于StringBuffer高于String。
 - String是一个常量，是不可变的，所以对于每一次+=赋值都会创建一个新的对象，StringBuffer和StringBuilder都是可变的，当进行字符串拼接时采用append方法，在原来的基础上进行追加，所以性能比String要高，又因为StringBuffer是线程安全的而StringBuilder是线程非安的，所以StringBuilder的效率高于StringBuffer。
 - 对于大数据量的字符串的拼接，采用StringBuffer,StringBuilder。
+
+## Hashtable与HashMap的区别
+- Map是一个以键值对存储的接口。Map下有两个具体的实现，分别是HashMap和HashTable。
+- HashMap是线程非安全的，HashTable是线程安全的，所以HashMap的效率高于HashTable。
+- HashMap允许键或值为空，而HashTable不允许键或值为空。
+
+## List,Set,Collection,Collections
+- List和Set都是接口，他们都继承于接口Collection,List是一个有序的可重复的集合，而Set的无序的不可重复的集合。Collection是集合的顶层接口，Collections是一个封装了众多关于集合操作的静态方法的工具类,因为构造方法是私有的，所以不能实例化。
+- List接口实现类有ArrayList,LinkedList,Vector。ArrayList和Vector是基于数组实现的,所以查询的时候速度快，而在进行增加和删除的时候速度较，LinkedList是基于链式存储结构，所以在进行查询的时候速度较慢但在进行增加和删除的时候速度较快。又因为Vector是线程安全的，所以他和ArrayList相比而言，查询效率要低。
