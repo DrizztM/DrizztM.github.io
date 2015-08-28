@@ -113,7 +113,7 @@ ps:mysql,sqlserver中如果id为自增类型，那么如果用TRUNCATE删除，�
 8.StringBuffer有三种构造方法，StringBuffer(),StringBuffer(int size)，StringBuffer(String str),我们在new的时候可以用StringBuffer(int size)，在初始化时就设置它的容量，可以很好的提升性能。<br>
 9.在jsp页面关闭无用的会话。<br>
 10.在引用页面时。Include指令，比include动作更高效。<br>
--Include指令在编译时引入指定的资源，在编译之前将两个页面的资源并为一个。只生成一个.Class文件。被引用的资源在编译的时候就确定了，比在运行时才确定更高效。<br>
--Include动作，该动作引入指定页面执行后生成的结果，由于他在运行时完成，生成多个.class文件。因此对输出结果的控制更加灵活，但是，只有当被引用的内容频繁改变时，用include动作才划算。<br>
+- Include指令在编译时引入指定的资源，在编译之前将两个页面的资源并为一个。只生成一个.Class文件。被引用的资源在编译的时候就确定了，比在运行时才确定更高效。<br>
+- Include动作，该动作引入指定页面执行后生成的结果，由于他在运行时完成，生成多个.class文件。因此对输出结果的控制更加灵活，但是，只有当被引用的内容频繁改变时，用include动作才划算。<br>
 11.及时清除不再需要的会话。<br>
 12.hashMap和ArrayList比hashTable和Vector的效率高。但是在知道数组大小时，尽量使用array[]。
