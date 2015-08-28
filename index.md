@@ -13,20 +13,7 @@ title: 欢迎
 - 2015年以技术合伙人身份加入创业公司。
 - My life goes on.
 
-##最新文章
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-primary">
-      {% for post in paginator.posts %}
-        <a  href='{{ post.url }}' class="list-group-item pjaxlink clearfix">
-          {{post.title}}
-          <span class="badge">{{ post.date | date:"%Y年%m月%d日" }}</span>
-        </a>
-      {% endfor %}
-    </div>
-  </div>
-</div>
+{% include /pages/archive.html %}
 
 ## 博客平台
 
