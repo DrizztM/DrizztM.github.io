@@ -15,7 +15,7 @@ keywords: java
 
 ## 线程安全
 
--Spring
+- Spring
  - Spring默认的注入是单例的，所以Spring存在线程安全问题。
  - 解决方案就是在spring配置文件创建注入Bean的时候，将原本的单例改成原型。
  - 旧版本Spring配置方式： Singleton=”true”【单例】→Singleton=”false”【原型】。
