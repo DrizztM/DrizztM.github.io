@@ -5,6 +5,9 @@ category: 技术
 keywords: jekyll
 ---
 
+## 安装过程
+参照这个链接 [Windows 上安装 Jekyll](http://blog.csdn.net/kong5090041/article/details/38408211) 
+
 ## gem install jekyll 网络错误
 
 由于国内网络原因（你懂的），导致 rubygems.org 存放在 Amazon S3 上面的资源文件间歇性连接失败。所以你会与遇到 gem install rack 或 bundle install 的时候半天没有响应，具体可以用 gem install rails -V 来查看执行过程。
@@ -35,7 +38,7 @@ gem ins hitimes -v 1.2.1 --platform ruby
 ## 再试试吧
 
 ```
-cd D:\workspace\DrizztM.github.io
+cd myblog
 $ jekyll serve
 # => Now browse to http://localhost:4000
 ```
