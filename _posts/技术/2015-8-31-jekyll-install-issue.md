@@ -6,7 +6,7 @@ keywords: jekyll
 ---
 
 ## 安装过程
-参照这个链接 [Windows 上安装 Jekyll](http://blog.csdn.net/kong5090041/article/details/38408211) 
+参照这个链接——<a href="http://blog.csdn.net/kong5090041/article/details/38408211" target="_blank">Windows上安装Jekyll</a>
 
 ## gem install jekyll 网络错误
 

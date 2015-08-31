@@ -13,6 +13,10 @@ title: 欢迎
 - 2015年以技术合伙人身份加入创业公司。
 - My life goes on.
 
+## 站内链接
+
+<a href="/pages/archive.html">归档</a>
+
 ## 博客平台
 
-这个博客通过 [Jekyll](http://jekyllrb.com/) 生成，非常感谢 [闫肃的博客](http://yansu.org) 提供的模板。
+这个博客通过 <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> 生成，非常感谢 <a href="http://yansu.org" target="_blank">闫肃的博客</a> 提供的模板。

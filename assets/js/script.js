@@ -79,7 +79,7 @@ $(document).on({
 // Re-run scripts for post content after pjax
 function afterPjax() {
   // Open links in new tab
-  $('#post__content a').attr('target','_blank');
+  //$('#post__content a').attr('target','_blank');
 
   // Generate post TOC for h1 h2 and h3
   var toc = $('#post__toc-ul');
