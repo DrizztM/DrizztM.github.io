@@ -59,7 +59,7 @@ select DISTINCT name from store
 select * from store ORDER BY num
 
 - 模糊查询（\_匹配一个  %匹配多个）<br>
-select name from store where name like '亚_'
+select name from store where name like '亚\_'
 select name from store where name like '淘%'
 
 - 内联、左联、右连<br>
