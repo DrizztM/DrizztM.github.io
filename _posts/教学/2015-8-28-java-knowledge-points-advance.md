@@ -63,9 +63,9 @@ select name from store where name like '亚_'
 select name from store where name like '淘%'
 
 - 内联、左联、右连<br>
-select * from store as s INNER JOIN country as c on s.country_id = c.id<br>
-select * from store as s LEFT JOIN country as c on s.country_id = c.id<br>
-select * from store as s RIGHT JOIN country as c on s.country_id = c.id
+select * from store as s INNER JOIN country as c on s.country\_id = c.id<br>
+select * from store as s LEFT JOIN country as c on s.country\_id = c.id<br>
+select * from store as s RIGHT JOIN country as c on s.country\_id = c.id
 
 - 分组查询<br>
 SELECT Customer,SUM(OrderPrice) FROM Orders GROUP BY Customer HAVING SUM(OrderPrice)<2000
