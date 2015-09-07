@@ -7,7 +7,7 @@ keywords: java 设计模式
 
 从今天开始总结java的23种设计模式，转载自<a href="http://my.csdn.net/zhangerqing" target="_blank">原文链接</a>，在细节方面有所修改。
 
-# 工厂方法模式（Factory Method）
+# 1.工厂方法模式（Factory Method）
 
 工厂方法模式分为三种：
 
