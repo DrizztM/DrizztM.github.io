@@ -1,46 +1,86 @@
 ---
 layout: post
-title: Java设计模式(转)——建造者模式
+title: Java设计模式(转)——5.原型模式
 category: 教学
 keywords: java 设计模式
 ---
 
 从今天开始总结java的23种设计模式，转载自<a href="http://my.csdn.net/zhangerqing" target="_blank">原文链接</a>，在细节方面有所修改。
 
-## 4.建造者模式（Builder）
+## 5.原型模式（Prototype）
 
-工厂类模式提供的是创建单个类的模式，而建造者模式则是将各种产品集中起来进行管理，用来创建复合对象，所谓复合对象就是指某个类具有不同的属性，其实建造者模式就是前面抽象工厂模式和最后的Test结合起来得到的。我们看一下代码：
-还和前面一样，一个Sender接口，两个实现类MailSender和SmsSender。最后，建造者类如下：
+原型模式虽然是创建型的模式，但是与工程模式没有关系，从名字即可看出，该模式的思想就是将一个对象作为原型，对其进行复制、克隆，产生一个和原对象类似的新对象。本小结会通过对象的复制，进行讲解。在Java中，复制对象是通过clone()实现的，先创建一个原型类：
 
 ``` java
-public class Builder {
-	
-	private List<Sender> list = new ArrayList<Sender>();
-	
-	public void produceMailSender(int count){
-		for(int i=0; i<count; i++){
-			list.add(new MailSender());
-		}
-	}
-	
-	public void produceSmsSender(int count){
-		for(int i=0; i<count; i++){
-			list.add(new SmsSender());
-		}
+public class Prototype implements Cloneable {
+
+	public Object clone() throws CloneNotSupportedException {
+		Prototype proto = (Prototype) super.clone();
+		return proto;
 	}
 }
 ```
 
-测试类：
+很简单，一个原型类，只需要实现Cloneable接口，覆写clone方法，此处clone方法可以改成任意的名称，因为Cloneable接口是个空接口，你可以任意定义实现类的方法名，如cloneA或者cloneB，因为此处的重点是super.clone()这句话，super.clone()调用的是Object的clone()方法，而在Object类中，clone()是native的，简单地讲，一个Native Method就是一个java调用非java代码的接口。一个Native Method是这样一个java的方法：该方法的实现由非java语言实现，比如C。这个特征并非java所特有，很多其它的编程语言都有这一机制，比如在C＋＋中，你可以用extern "C"告知C＋＋编译器去调用一个C的函数。
+
+我们首先需要了解对象深、浅复制的概念：
+
+浅复制：将一个对象复制后，基本数据类型的变量都会重新创建，而引用类型，指向的还是原对象所指向的。
+
+深复制：将一个对象复制后，不论是基本数据类型还有引用类型，都是重新创建的。简单来说，就是深复制进行了完全彻底的复制，而浅复制不彻底。
+
+此处，写一个深浅复制的例子：
+
 
 ``` java
-public class Test {
+public class Prototype implements Cloneable, Serializable {
 
-	public static void main(String[] args) {
-		Builder builder = new Builder();
-		builder.produceMailSender(10);
+	private static final long serialVersionUID = 1L;
+	private String string;
+
+	private SerializableObject obj;
+
+	/* 浅复制 */
+	public Object clone() throws CloneNotSupportedException {
+		Prototype proto = (Prototype) super.clone();
+		return proto;
 	}
+
+	/* 深复制 */
+	public Object deepClone() throws IOException, ClassNotFoundException {
+
+		/* 写入当前对象的二进制流 */
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
+		oos.writeObject(this);
+
+		/* 读出二进制流产生的新对象 */
+		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+		ObjectInputStream ois = new ObjectInputStream(bis);
+		return ois.readObject();
+	}
+
+	public String getString() {
+		return string;
+	}
+
+	public void setString(String string) {
+		this.string = string;
+	}
+
+	public SerializableObject getObj() {
+		return obj;
+	}
+
+	public void setObj(SerializableObject obj) {
+		this.obj = obj;
+	}
+
+}
+
+class SerializableObject implements Serializable {
+	private static final long serialVersionUID = 1L;
 }
 ```
 
-从这点看出，建造者模式将很多功能集成到一个类里，这个类可以创造出比较复杂的东西。所以与工程模式的区别就是：工厂模式关注的是创建单个产品，而建造者模式则关注创建符合对象，多个部分。因此，是选择工厂模式还是建造者模式，依实际情况而定。
+要实现深复制，需要采用流的形式读入当前对象的二进制输入，再写出二进制数据对应的对象。

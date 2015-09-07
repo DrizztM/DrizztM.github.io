@@ -1,86 +1,187 @@
 ---
 layout: post
-title: Java设计模式(转)——原型模式
+title: Java设计模式(转)——6.适配器模式
 category: 教学
 keywords: java 设计模式
 ---
 
 从今天开始总结java的23种设计模式，转载自<a href="http://my.csdn.net/zhangerqing" target="_blank">原文链接</a>，在细节方面有所修改。
 
-## 5.原型模式（Prototype）
+我们接着讨论设计模式，这章开始，我将讲下7种结构型模式：适配器模式、装饰模式、代理模式、外观模式、桥接模式、组合模式、享元模式。其中对象的适配器模式是各种模式的起源，我们看下面的图：
 
-原型模式虽然是创建型的模式，但是与工程模式没有关系，从名字即可看出，该模式的思想就是将一个对象作为原型，对其进行复制、克隆，产生一个和原对象类似的新对象。本小结会通过对象的复制，进行讲解。在Java中，复制对象是通过clone()实现的，先创建一个原型类：
+<img src="/assets/img/content11.png">
+
+## 6.适配器模式（Adapter）
+
+适配器模式将某个类的接口转换成客户端期望的另一个接口，目的是消除由于接口不匹配所造成的类的兼容性问题。主要分为三类：类的适配器模式、对象的适配器模式、接口的适配器模式。首先，我们来看看<font color="blue">类的适配器模式</font>，先看类图：
+
+<img src="/assets/img/content12.png">
+
+核心思想就是：有一个Source类，拥有一个方法，待适配，目标接口是Targetable，通过Adapter类，将Source的功能扩展到Targetable里，看代码：
 
 ``` java
-public class Prototype implements Cloneable {
+public class Source {
 
-	public Object clone() throws CloneNotSupportedException {
-		Prototype proto = (Prototype) super.clone();
-		return proto;
+	public void method1() {
+		System.out.println("this is original method!");
 	}
 }
 ```
 
-很简单，一个原型类，只需要实现Cloneable接口，覆写clone方法，此处clone方法可以改成任意的名称，因为Cloneable接口是个空接口，你可以任意定义实现类的方法名，如cloneA或者cloneB，因为此处的重点是super.clone()这句话，super.clone()调用的是Object的clone()方法，而在Object类中，clone()是native的，简单地讲，一个Native Method就是一个java调用非java代码的接口。一个Native Method是这样一个java的方法：该方法的实现由非java语言实现，比如C。这个特征并非java所特有，很多其它的编程语言都有这一机制，比如在C＋＋中，你可以用extern "C"告知C＋＋编译器去调用一个C的函数。
-
-我们首先需要了解对象深、浅复制的概念：
-
-浅复制：将一个对象复制后，基本数据类型的变量都会重新创建，而引用类型，指向的还是原对象所指向的。
-
-深复制：将一个对象复制后，不论是基本数据类型还有引用类型，都是重新创建的。简单来说，就是深复制进行了完全彻底的复制，而浅复制不彻底。
-
-此处，写一个深浅复制的例子：
-
-
 ``` java
-public class Prototype implements Cloneable, Serializable {
+public interface Targetable {
 
-	private static final long serialVersionUID = 1L;
-	private String string;
+	/* 与原类中的方法相同 */
+	public void method1();
 
-	private SerializableObject obj;
-
-	/* 浅复制 */
-	public Object clone() throws CloneNotSupportedException {
-		Prototype proto = (Prototype) super.clone();
-		return proto;
-	}
-
-	/* 深复制 */
-	public Object deepClone() throws IOException, ClassNotFoundException {
-
-		/* 写入当前对象的二进制流 */
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		ObjectOutputStream oos = new ObjectOutputStream(bos);
-		oos.writeObject(this);
-
-		/* 读出二进制流产生的新对象 */
-		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream ois = new ObjectInputStream(bis);
-		return ois.readObject();
-	}
-
-	public String getString() {
-		return string;
-	}
-
-	public void setString(String string) {
-		this.string = string;
-	}
-
-	public SerializableObject getObj() {
-		return obj;
-	}
-
-	public void setObj(SerializableObject obj) {
-		this.obj = obj;
-	}
-
-}
-
-class SerializableObject implements Serializable {
-	private static final long serialVersionUID = 1L;
+	/* 新类的方法 */
+	public void method2();
 }
 ```
 
-要实现深复制，需要采用流的形式读入当前对象的二进制输入，再写出二进制数据对应的对象。
+``` java
+public class Adapter extends Source implements Targetable {
+
+	@Override
+	public void method2() {
+		System.out.println("this is the targetable method!");
+	}
+}
+```
+
+Adapter类继承Source类，实现Targetable接口，下面是测试类：
+
+``` java
+public class AdapterTest {
+
+	public static void main(String[] args) {
+		Targetable target = new Adapter();
+		target.method1();
+		target.method2();
+	}
+}
+```
+
+输出：
+
+this is original method!<br>
+this is the targetable method!
+
+这样Targetable接口的实现类就具有了Source类的功能。
+
+<font color="blue">对象的适配器模式</font>
+
+基本思路和类的适配器模式相同，只是将Adapter类作修改，这次不继承Source类，而是持有Source类的实例，以达到解决兼容性的问题。看图：
+
+<img src="/assets/img/content13.png">
+
+只需要修改Adapter类的源码即可：
+
+``` java
+public class Wrapper implements Targetable {
+
+	private Source source;
+	
+	public Wrapper(Source source){
+		super();
+		this.source = source;
+	}
+	@Override
+	public void method2() {
+		System.out.println("this is the targetable method!");
+	}
+
+	@Override
+	public void method1() {
+		source.method1();
+	}
+}
+```
+
+测试类：
+
+``` java
+public class AdapterTest {
+
+	public static void main(String[] args) {
+		Source source = new Source();
+		Targetable target = new Wrapper(source);
+		target.method1();
+		target.method2();
+	}
+}
+```
+
+输出与第一种一样，只是适配的方法不同而已。
+
+第三种适配器模式是<font color="blue">接口的适配器模式</font>，接口的适配器是这样的：有时我们写的一个接口中有多个抽象方法，当我们写该接口的实现类时，必须实现该接口的所有方法，这明显有时比较浪费，因为并不是所有的方法都是我们需要的，有时只需要某一些，此处为了解决这个问题，我们引入了接口的适配器模式，借助于一个抽象类，该抽象类实现了该接口，实现了所有的方法，而我们不和原始的接口打交道，只和该抽象类取得联系，所以我们写一个类，继承该抽象类，重写我们需要的方法就行。看一下类图：
+
+<img src="/assets/img/content14.png">
+
+这个很好理解，在实际开发中，我们也常会遇到这种接口中定义了太多的方法，以致于有时我们在一些实现类中并不是都需要。看代码：
+
+``` java
+public interface Sourceable {
+	
+	public void method1();
+	public void method2();
+}
+```
+
+抽象类Wrapper2：
+
+``` java
+public abstract class Wrapper2 implements Sourceable{
+	
+	public void method1(){}
+	public void method2(){}
+}
+```
+
+``` java
+public class SourceSub1 extends Wrapper2 {
+	public void method1(){
+		System.out.println("the sourceable interface's first Sub1!");
+	}
+}
+```
+
+``` java
+public class SourceSub2 extends Wrapper2 {
+	public void method2(){
+		System.out.println("the sourceable interface's second Sub2!");
+	}
+}
+```
+
+测试类：
+
+``` java
+public class WrapperTest {
+
+	public static void main(String[] args) {
+		Sourceable source1 = new SourceSub1();
+		Sourceable source2 = new SourceSub2();
+		
+		source1.method1();
+		source1.method2();
+		source2.method1();
+		source2.method2();
+	}
+}
+```
+
+测试输出：
+
+the sourceable interface's first Sub1!
+the sourceable interface's second Sub2!
+
+达到了我们的效果！
+
+讲了这么多，总结一下三种适配器模式的应用场景：
+
+类的适配器模式：当希望将一个类转换成满足另一个新接口的类时，可以使用类的适配器模式，创建一个新类，继承原有的类，实现新的接口即可。
+
+对象的适配器模式：当希望将一个对象转换成满足另一个新接口的对象时，可以创建一个Wrapper类，持有原类的一个实例，在Wrapper类的方法中，调用实例的方法就行。
+
+接口的适配器模式：当不希望实现一个接口中所有的方法时，可以创建一个抽象类Wrapper，实现所有方法，我们写别的类的时候，继承抽象类即可。
