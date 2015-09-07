@@ -44,7 +44,7 @@ public class SmsSender implements Sender {
 
 	@Override
 	public void Send() {
-		System.out.println("this is mailsender!");
+		System.out.println("this is smssender!");
 	}
 }
 ```
@@ -80,7 +80,7 @@ public class FactoryTest {
 }
 ```
 
-输出：this is sms sender!
+输出：this is smssender!
 
 ## 多个工厂方法模式
 
