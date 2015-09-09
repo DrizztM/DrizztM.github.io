@@ -5,8 +5,6 @@ category: 教学
 keywords: java 设计模式
 ---
 
-从今天开始总结java的23种设计模式，转载自<a href="http://my.csdn.net/zhangerqing" target="_blank">原文链接</a>，在细节方面有所修改。
-
 我们接着讨论设计模式，这章开始，我将讲下7种结构型模式：适配器模式、装饰模式、代理模式、外观模式、桥接模式、组合模式、享元模式。其中对象的适配器模式是各种模式的起源，我们看下面的图：
 
 <img src="/assets/img/content11.png">
