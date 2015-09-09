@@ -5,8 +5,6 @@ category: 教学
 keywords: java 设计模式
 ---
 
-从今天开始总结java的23种设计模式，转载自<a href="http://my.csdn.net/zhangerqing" target="_blank">原文链接</a>，在细节方面有所修改。
-
 ## 3.单例模式（Singleton）
 
 单例对象（Singleton）是一种常用的设计模式。在Java应用中，单例对象能保证在一个JVM中，该对象只有一个实例存在。这样的模式有几个好处：
