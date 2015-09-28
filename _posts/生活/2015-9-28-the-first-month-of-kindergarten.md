@@ -30,3 +30,5 @@ keywords: 悦小萌
 <img src="/assets/img/0040.jpg">
 
 <img src="/assets/img/0041.jpg">
+
+<img src="/assets/img/0042.jpg">
