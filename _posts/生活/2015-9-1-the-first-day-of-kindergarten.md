@@ -9,15 +9,15 @@ keywords: 悦小萌
 
 孩子直接跑到教室里去了，也不理我们，我是该放心呢还是该担心呢。。。
 
-<img src="/assets/img/content2.jpg">
-<img src="/assets/img/content3.jpg">
+<img src="/assets/img/0002.jpg">
+<img src="/assets/img/0003.jpg">
 
 ## 幼儿园活动
 
 幼儿园8月份开学，每天中午老师都会发孩子的照片，以前没感觉，今天是非常期待的。
 下午1点多，照片终于来了，看到悦小萌认真的表情，很开心。
 
-<img src="/assets/img/content4.jpg">
+<img src="/assets/img/0004.jpg">
 
 ## 回家
 
@@ -25,5 +25,5 @@ keywords: 悦小萌
 
 ## 悦小萌的第一个作品
 
-<img src="/assets/img/content5.jpg">
+<img src="/assets/img/0005.jpg">
 

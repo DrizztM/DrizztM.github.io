@@ -8,7 +8,7 @@ keywords: java
 ## JVM的相关概念
 
 - 生命周期：加载、连接、初始化，使用，卸载。<br>
-<img src="/assets/img/content1.png">
+<img src="/assets/img/0001.png">
 
 - 对象基本上都是在jvm的堆区中创建，在创建对象之前，会触发类加载（加载、连接、初始化），其中链接又可分为校验（Verify），备（Prepare），解析（Resolve）三步。
 - 当类初始化完成后，利用ClassLoader来装载，通过指定的className，找到二进制码，生成Class实例，放到JVM中。

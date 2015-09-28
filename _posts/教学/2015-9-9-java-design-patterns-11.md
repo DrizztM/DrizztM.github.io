@@ -9,7 +9,7 @@ keywords: java 设计模式
 
 组合模式有时又叫<font color="blue">部分-整体模式</font>，在处理类似树形结构的问题时比较方便，看看关系图：
 
-<img src="/assets/img/content20.png">
+<img src="/assets/img/0020.png">
 
 直接来看代码：
 

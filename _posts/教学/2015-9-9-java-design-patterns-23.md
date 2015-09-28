@@ -9,7 +9,7 @@ keywords: java 设计模式
 
 解释器模式是我们暂时的最后一讲，一般主要应用在OOP开发中的编译器的开发中，所以适用面比较窄。
 
-<img src="/assets/img/content34.png">
+<img src="/assets/img/0034.png">
 
 Context类是一个上下文环境类，Plus和Minus分别是用来计算的实现，代码如下：
 
