@@ -82,6 +82,8 @@ awk '{if($1>1000)print "deny "$2";"}'<br>
 \> blockip.conf<br>
 将打印结果保存到blockip.conf中。
 
+<font color="blue">还可用如下命令：netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n</font>
+
 ## 其他方案（待研究）
 
 fail2ban
