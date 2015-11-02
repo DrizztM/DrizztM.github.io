@@ -94,6 +94,10 @@ awk '{if($1>1000)print "deny "$2";"}'<br>
 修改：worker\_connections  1024;<br>
 调整为：worker\_connections  5000;
 
+## 阿里云的云盾
+
+千万不要让阿里云去做清洗，会导致一部分ip无法访问。
+
 ## 其他方案（待研究）
 
 fail2ban
