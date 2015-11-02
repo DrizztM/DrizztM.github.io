@@ -85,10 +85,13 @@ awk '{if($1>1000)print "deny "$2";"}'<br>
 <font color="blue">还可用如下命令： netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n -r | head -n 10</font>
 
 
-## nginx配置调整
+## nginx报错
 
-worker_connections  1024;
+```
+2015/11/01 20:04:19 [error] 14533#0: *1855045 upstream servers are busy or encounter error! while connecting to upstream, client: 117.136.0.0, server: 0.0.0.0:88
+```
 
+修改：worker_connections  1024;<br>
 调整为：worker_connections  5000;
 
 ## 其他方案（待研究）
