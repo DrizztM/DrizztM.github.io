@@ -84,6 +84,13 @@ awk '{if($1>1000)print "deny "$2";"}'<br>
 
 <font color="blue">还可用如下命令： netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n -r | head -n 10</font>
 
+
+## nginx配置调整
+
+worker_connections  1024;
+
+调整为：worker_connections  5000;
+
 ## 其他方案（待研究）
 
 fail2ban
