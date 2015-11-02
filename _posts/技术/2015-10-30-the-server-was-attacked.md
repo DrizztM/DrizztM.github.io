@@ -91,8 +91,8 @@ awk '{if($1>1000)print "deny "$2";"}'<br>
 2015/11/01 20:04:19 [error] 14533#0: *1855045 upstream servers are busy or encounter error! while connecting to upstream, client: 117.136.0.0, server: 0.0.0.0:88
 ```
 
-修改：worker_connections  1024;<br>
-调整为：worker_connections  5000;
+修改：worker\_connections  1024;<br>
+调整为：worker\_connections  5000;
 
 ## 其他方案（待研究）
 
