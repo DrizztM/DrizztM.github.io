@@ -58,6 +58,12 @@ ignoreregex =	;需要忽略的正则
 logtarget = /etc/fail2ban/fail2ban.log
 ```
 
+### 添加信任ip，在/etc/fail2ban/fail2ban.conf中：
+
+```
+ignoreip = 
+```
+
 ### 启动服务
 
 ```
