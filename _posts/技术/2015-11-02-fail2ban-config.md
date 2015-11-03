@@ -33,11 +33,12 @@ yum install fail2ban
 enabled = true ;是否启用
 port = 8000 ;监控端口
 filter = nginx    ;需要过滤匹配规则
-logpath = /var/log/nginx/tcp_access_log; 日志路径
+logpath = /data/nginx/logs/tcp_access.log; 日志路径
 findtime =60    ;检测周期 单位秒 以下一样
 bantime =300    ;iptable封禁IP时间
 maxretry =10    ;最大尝试次数
 action = iptables[name=nginx, port="8000", protocal=tcp] ;发现暴力破解采取iptalbes封禁IP的措施
+ignoreip = 	;添加信任ip
 ```
 
 注意：action = iptables[name=nginx, port="8000", protocal=tcp]中的port端口号一定要加""。
@@ -56,12 +57,6 @@ ignoreregex =	;需要忽略的正则
 
 ```
 logtarget = /etc/fail2ban/fail2ban.log
-```
-
-### 添加信任ip，在/etc/fail2ban/fail2ban.conf中：
-
-```
-ignoreip = 
 ```
 
 ### 启动服务
