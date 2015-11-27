@@ -64,3 +64,25 @@ logtarget = /etc/fail2ban/fail2ban.log
 ```
 service fail2ban start
 ```
+
+## 解除fail2ban绑定的IP
+
+\# iptables -L --line-numbers
+
+\# iptables -D <chain> <chain number>
+
+比如：执行iptables -L --line-numbers，从被禁用的ip往上看。
+
+```
+Chain f2b-nginx (1 references)
+num  target     prot opt source               destination         
+1    REJECT     all  --  112.224.19.130       anywhere            reject-with icmp-port-unreachable 
+2    REJECT     all  --  179.236.244.123.broad.hld.ln.dynamic.163data.com.cn  anywhere            reject-with icmp-port-unreachable 
+3    REJECT     all  --  111.201.181.147      anywhere            reject-with icmp-port-unreachable 
+4    REJECT     all  --  27.36.55.229         anywhere            reject-with icmp-port-unreachable 
+5    REJECT     all  --  112.93.42.189        anywhere            reject-with icmp-port-unreachable 
+6    RETURN     all  --  anywhere             anywhere
+```
+
+比如要去掉序号为3的ip（ 111.201.181.147），注意看第一句：Chain f2b-nginx，那么执行的命令为:<br>
+<font color="blue">iptables -D f2b-nginx 3</font>。
