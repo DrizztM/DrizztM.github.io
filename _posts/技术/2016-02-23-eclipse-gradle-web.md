@@ -5,14 +5,12 @@ category: 技术
 keywords: IDE
 ---
 
-## 查找相关
-
 1. 安装 Gradle插件<br>
 在 Eclipse Marketplace中搜索 Gradle, 选择安装 Gradle Integration for Eclipse
 
 2. 新建一个 Dynamic Web Project<br>
 在项目根目录下新建 build.gradle 文件, 并向其中写入如下内容: <br>
-```xml
+```
 import org.gradle.plugins.ide.eclipse.model.Facet
 
 apply plugin: 'java'
@@ -43,51 +41,6 @@ dependencies {
 	compile (
 	"org.freemarker:freemarker:${freemarkerVersion}",
 
-	'commons-logging:commons-logging:1.2',
-	'commons-io:commons-io:2.4',
-	'commons-fileupload:commons-fileupload:1.3.1',
-	'commons-codec:commons-codec:1.10',
-	'org.apache.commons:commons-collections4:4.0',
-	'org.apache.commons:commons-lang3:3.4',
-
-	"org.springframework:spring-context-support:${springVersion}",
-	"org.springframework:spring-jdbc:${springVersion}",
-	"org.springframework:spring-orm:${springVersion}",
-	"org.springframework:spring-webmvc:${springVersion}",
-
-	"org.hibernate:hibernate-core:${hibernateVersion}",
-	"org.hibernate:hibernate-ehcache:${hibernateVersion}",
-	"org.hibernate:hibernate-search:${hibernateSearchVersion}",
-
-	'c3p0:c3p0:0.9.1.2',
-	'mysql:mysql-connector-java:5.1.35',
-
-	"com.fasterxml.jackson.core:jackson-core:${jacksonVersion}",
-	"com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}",
-	"com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}",
-
-	"org.apache.httpcomponents:httpclient:${httpclientVersion}",
-	"org.apache.httpcomponents:httpmime:${httpclientVersion}",
-	"org.apache.httpcomponents:httpclient-cache:${httpclientVersion}",
-
-	'javax.activation:activation:1.1.1',
-    'javax.transaction:jta:1.1',
-	'javax.mail:mail:1.4.7',
-    
-    'org.slf4j:slf4j-api:1.7.10',
-	'eu.bitwalker:UserAgentUtils:1.15',
-	'antlr:antlr:2.7.7',
-	'dom4j:dom4j:1.6.1',
-	'net.coobird:thumbnailator:0.4.8',
-
-	'org.apache.ant:ant:1.9.4',
-
-	'org.quartz-scheduler:quartz:2.2.1',
-
-	'cglib:cglib-nodep:3.1',
-	'dom4j:dom4j:1.6.1'
-	)
-	compile('javax.servlet:javax.servlet-api:3.1.0')
 }
 
 eclipse {
