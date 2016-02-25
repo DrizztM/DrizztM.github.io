@@ -39,7 +39,7 @@ ext {
 }
 
 war{
-    baseName ='cms'
+    baseName ='drizzt_web'
     from("$projectDir/src/") {
         include "*.xml"
         into('WEB-INF/classes')
