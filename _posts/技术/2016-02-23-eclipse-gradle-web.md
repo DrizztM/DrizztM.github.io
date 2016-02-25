@@ -38,6 +38,20 @@ ext {
 	jacksonVersion = '2.6.1'
 }
 
+war{
+    baseName ='cms'
+    from("$projectDir/src/") {
+        include "*.xml"
+        into('WEB-INF/classes')
+    }
+    from("$projectDir/src/config/language") {
+        into('WEB-INF/classes/config/language')
+    }
+    from("$projectDir/src/config/properties") {
+        into('WEB-INF/classes/config/properties')
+    }
+}
+
 dependencies {
 	compile (
 	"org.freemarker:freemarker:${freemarkerVersion}",
