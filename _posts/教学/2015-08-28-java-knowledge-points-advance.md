@@ -116,7 +116,7 @@ ps:mysql,sqlserver中如果id为自增类型，那么如果用TRUNCATE删除，�
 
 2.尽量使用局部变量，速度会比较快。<br>
 
-3.当项目使用的是oracle数据库时，java中写的sql语句尽量大写，减轻oracl解析的负担。<br>
+3.当项目使用的是oracle数据库时，java中写的sql语句尽量大写，减轻oracle解析的负担。<br>
 
 4.操作流的时候用完一定要关闭。<br>
 
