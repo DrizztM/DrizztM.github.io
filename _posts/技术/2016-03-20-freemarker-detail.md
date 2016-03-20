@@ -59,4 +59,47 @@ item\_parity	返回字符串值 "odd" 或 "even"<br>
 item\_parity\_cap	返回字符串值 "Odd" 或 "Even"<br>
 item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两个值来循环<br>
 
+## 常用指令
+1.include指令<br>
+<#include filename><br>
+<#include filename options> <br>
+说明:options包括parse 和encoding <br>
+    parse ：为true时，被包含的文件作用FTL模板处理,否则作为普通文本处理，默认为true。<br>
+    encoding ：编码<br>
+<#include "*/footer.ftl"><br>
+       *代表本目录或任一上级目录。<br>
+       如有"/foo/bar/template.ftl"，则上例按如下顺序查找/foo/bar/footer.ftl 、      /foo/footer.ftl、 /footer.ftl 。如有<#include "*/commons/footer.ftl"> ，会   按/foo/bar/commons/footer.ftl、/foo/commons/footer.ftl 、/commons/footer.ftl顺序查找。<br>
 
+2.import指令<br>
+<#import path as hash> <br>
+例：<br>
+mylib.ftl:<br>
+
+```
+<#macro copyright date><br>
+ <p>Copyright (C) ${date} Julia Smith. All rights reserved.</p><br>
+</#macro><br>
+```
+
+在另一个文件中：<br>
+<#import "/libs/mylib.ftl" as my> <br>
+<@my.copyright date="1999-2002"/> <br>
+
+
+3.noparse指令
+
+```
+<#noparse>
+ <#list animals as being>
+ <tr><td>${being.name}<td>${being.price} Euros
+ </#list>
+</#noparse>
+```
+
+输出
+
+```
+<#list animals as being>
+ <tr><td>${being.name}<td>${being.price} Euros
+ </#list>
+```
