@@ -74,17 +74,20 @@ item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两�
 <#import path as hash> <br>
 例：<br>
 mylib.ftl:<br>
+
 ```
 <#macro copyright date><br>
  <p>Copyright (C) ${date} Julia Smith. All rights reserved.</p><br>
 </#macro><br>
 ```
+
 在另一个文件中：<br>
 <#import "/libs/mylib.ftl" as my> <br>
 <@my.copyright date="1999-2002"/> <br>
 
 
 3.noparse指令
+
 ```
 <#noparse>
  <#list animals as being>
@@ -92,7 +95,9 @@ mylib.ftl:<br>
  </#list>
 </#noparse>
 ```
+
 输出
+
 ```
 <#list animals as being>
  <tr><td>${being.name}<td>${being.price} Euros
@@ -100,6 +105,7 @@ mylib.ftl:<br>
 ```
 
 4.assign指令
+
 ```
 <#assign name=value>
 <#assign name1=value1 name2=value2 ... nameN=v       alueN> 
@@ -107,6 +113,7 @@ mylib.ftl:<br>
 <#assign name> capture this </#assign>
 <#assign name in namespacehash> capture this</#assign>
 ```
+
 在当前或指定命名空间内定义或替换已存在的顶级变量。如：some_hash.subvar不行，而 some_hash则可以。 Assign指令中包含的内容不会被输出，而是被存入指定的变量中。<br>
 <#assign var="你好"><br>
 ${var}<br>
