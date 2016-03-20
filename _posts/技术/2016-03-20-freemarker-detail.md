@@ -74,20 +74,17 @@ item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两�
 <#import path as hash> <br>
 例：<br>
 mylib.ftl:<br>
-
 ```
 <#macro copyright date><br>
  <p>Copyright (C) ${date} Julia Smith. All rights reserved.</p><br>
 </#macro><br>
 ```
-
 在另一个文件中：<br>
 <#import "/libs/mylib.ftl" as my> <br>
 <@my.copyright date="1999-2002"/> <br>
 
 
 3.noparse指令
-
 ```
 <#noparse>
  <#list animals as being>
@@ -95,9 +92,7 @@ mylib.ftl:<br>
  </#list>
 </#noparse>
 ```
-
 输出
-
 ```
 <#list animals as being>
  <tr><td>${being.name}<td>${being.price} Euros
