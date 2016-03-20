@@ -114,9 +114,28 @@ mylib.ftl:<br>
 <#assign name in namespacehash> capture this</#assign>
 ```
 
-在当前或指定命名空间内定义或替换已存在的顶级变量。如：some_hash.subvar不行，而 some_hash则可以。 Assign指令中包含的内容不会被输出，而是被存入指定的变量中。<br>
+在当前或指定命名空间内定义或替换已存在的顶级变量。如：some\_hash.subvar不行，而 some\_hash则可以。 Assign指令中包含的内容不会被输出，而是被存入指定的变量中。<br>
 <#assign var="你好"><br>
 ${var}<br>
 输出：你好。
 
+5.global指令
+
+```
+<#global name=value>
+<#global name1=value1 name2=value2 ... nameN=v       alueN> 
+<#global name> capture this </#global>
+```
+
+在所有命名空间内定义或替换已存在的顶级变量。规则与assign一致。
+
+6.local 指令
+
+```
+<#local name=value> 
+<#local name1=value1 name2=value2 ... nameN=valueN> 
+<#local name> capture this</#local>
+```
+
+规则与assign一致，只在宏和方法的内部定义 才会有作用。
 
