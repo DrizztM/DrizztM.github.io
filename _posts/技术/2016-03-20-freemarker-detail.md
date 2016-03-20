@@ -98,3 +98,18 @@ mylib.ftl:<br>
  <tr><td>${being.name}<td>${being.price} Euros
  </#list>
 ```
+
+4.assign指令
+```
+<#assign name=value>
+<#assign name1=value1 name2=value2 ... nameN=v       alueN> 
+<#assign name=value in namespacehash>
+<#assign name> capture this </#assign>
+<#assign name in namespacehash> capture this</#assign>
+```
+在当前或指定命名空间内定义或替换已存在的顶级变量。如：some_hash.subvar不行，而 some_hash则可以。 Assign指令中包含的内容不会被输出，而是被存入指定的变量中。<br>
+<#assign var="你好"><br>
+${var}<br>
+输出：你好。
+
+
