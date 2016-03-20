@@ -60,7 +60,9 @@ item\_parity\_cap	返回字符串值 "Odd" 或 "Even"<br>
 item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两个值来循环<br>
 
 ## 常用指令
-1.include指令<br>
+
+### include指令
+
 <#include filename><br>
 <#include filename options> <br>
 说明:options包括parse 和encoding <br>
@@ -70,7 +72,8 @@ item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两�
        *代表本目录或任一上级目录。<br>
        如有"/foo/bar/template.ftl"，则上例按如下顺序查找/foo/bar/footer.ftl 、      /foo/footer.ftl、 /footer.ftl 。如有<#include "*/commons/footer.ftl"> ，会   按/foo/bar/commons/footer.ftl、/foo/commons/footer.ftl 、/commons/footer.ftl顺序查找。<br>
 
-2.import指令<br>
+### import指令
+
 <#import path as hash> <br>
 例：<br>
 mylib.ftl:<br>
@@ -86,7 +89,7 @@ mylib.ftl:<br>
 <@my.copyright date="1999-2002"/> <br>
 
 
-3.noparse指令
+### noparse指令
 
 ```
 <#noparse>
@@ -104,7 +107,7 @@ mylib.ftl:<br>
  </#list>
 ```
 
-4.assign指令
+### assign指令
 
 ```
 <#assign name=value>
@@ -119,7 +122,7 @@ mylib.ftl:<br>
 ${var}<br>
 输出：你好。
 
-5.global指令
+### global指令
 
 ```
 <#global name=value>
@@ -129,7 +132,7 @@ ${var}<br>
 
 在所有命名空间内定义或替换已存在的顶级变量。规则与assign一致。
 
-6.local 指令
+### local 指令
 
 ```
 <#local name=value> 
@@ -137,5 +140,200 @@ ${var}<br>
 <#local name> capture this</#local>
 ```
 
-规则与assign一致，只在宏和方法的内部定义 才会有作用。
+规则与assign一致，只在宏和方法的内部定义才会有作用。
+
+## springmvc 配置参数
+
+### locale
+
+作用<br>
+设置默认地区，主要影响数字、日期输出格式，request中没有指定地区时模板查找值<br>
+例如：eh_US，zh_CN<br>
+
+### classic\_compatible
+
+作用<br>
+兼容旧版freemarker习惯，不建议使用，会导致一些问题，比如include必须用绝对路径值<br>
+"true", "false" 或者 "yes", "no" 或者 "t", "f" 或者  "y", "n"<br>
+
+### template\_exception\_handler
+
+作用<br>
+	模板异常处理器<br>
+值<br>
+rethrow，debug，html_debug，ignore<br>
+也可以是类名<br>
+默认是debug<br>
+
+### arithmetic\_engine
+
+作用<br>
+数学运算引擎<br>
+值<br>
+bigdecimal,conservative<br>
+默认值bigdecimal<br>
+
+### object\_wrapper
+
+作用<br>
+对象包装器<br>
+值<br>
+default, default_2_3_0，simple，beans，jython<br>
+
+### number\_format
+
+作用<br>
+	设置默认数字输出格式<br>
+值<br>
+	number，currency，percent，computer<br>
+也可以 DecimalFormat 类型(比如"0.##")<br>
+具体使用参考 <br>
+http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-external=true
+
+### boolean\_format
+
+作用<br>
+	设置默认布尔值输出格式<br>
+值<br>
+	true时输出的值和false时输出的值使用英文逗号分隔<br>
+	比如true,false或者 是,否<br>
+	
+### date\_format,time\_format,datetime\_format
+
+作用<br>
+	设置默认时间、日期输出格式<br>
+值<br>
+	short, medium, long, full<br>
+	也可以是表达式 比如yyyy-MM-dd hh:mm:ss a或者yyyy-MM-dd HH:mm:ss<br>
+	
+	
+### time\_zone
+
+作用<br>
+	设置时区<br>
+值<br>
+	GMT+8:00，Asia/Shanghai<br>
+默认为系统时区和设置的locale无关<br>
+ 
+### sql\_date\_and\_time\_time\_zone
+
+作用<br>
+	设置java.sql.Date的时区<br>
+值<br>
+	GMT+8:00，Asia/Shanghai<br>
+	
+### output\_encoding
+
+作用<br>
+	设置FreeMarker输出的字符集<br>
+值<br>
+	utf-8，gb2312<br>
+	
+### url\_escaping\_charset
+
+作用<br>
+	设置URL转义字符集<br>
+值<br>
+	UTF-8，GB2312,ISO-8859-1<br>
+	默认为output_encoding中的值<br>
+	
+### auto\_flush
+
+作用<br>
+	设置模板处理后自动刷新<br>
+值<br>
+	true,false<br>
+	默认值true<br>
+
+### new\_builtin\_class\_resolver
+
+作用<br>
+	设置?new内建函数使用范围?new()<br>
+值<br>
+	unrestricted，safer，allows\_nothing<br>
+	如果值包含冒号则使用OptInTemplateClassResolver.此时可使用allowed\_classes:和trusted\_templates:<br>
+	默认是safer<br>
+	如果值包含点则当作类名使用<br>
+	
+### show\_error\_tips
+
+作用<br>
+	控制是否显示错误提示<br>
+值<br>
+	true,false<br>
+	默认值true<br>
+	
+### api\_builtin\_enabled
+
+作用<br>
+	控制?api内建函数是否可用<br>
+值<br>
+	true,false<br>
+	默认值false <br>
+	
+### auto\_import
+
+作用<br>
+	在所有模板中自动引入模板<br>
+值<br>
+规范：模板文件 as 命名空间<br>
+多个引入用逗号隔开<br>
+/lib/form.ftl as f, /lib/widget as w, "/lib/odd name.ftl" as odd<br>
+
+### auto\_include
+
+作用<br>
+	在所有模板中自动包含模板<br>
+值<br>
+规范：模板文件<br>
+多个引入用逗号隔开<br>
+/include/common.ftl, "/include/evil name.ftl"<br>
+
+### default\_encoding
+
+作用<br>
+	设置默认编码，如果不设置，可能会导致切换到不同环境时产生乱码问题<br>
+值<br>
+	UTF-8,ISO-8859-1,GB2312<br>
+	默认值为操作系统的编码<br>
+
+### localized\_lookup
+
+作用<br>
+	控制模板本地化查找是否可用，比如locale设置为zh\_CN加载模板foo.ftl时，freemarker自动查找foo\_zh\_CN.ftl,foo\_zh.ftl,foo.ftl并返回找到的第一个<br>
+值<br>
+	true,false<br>
+	默认值为true<br>
+	
+### whitespace\_stripping
+
+作用<br>
+	控制是否删除多余空格<br>
+值<br>
+	true,false<br>
+	默认值为true<br>
+	
+### template\_update\_delay
+
+作用<br>
+	设置模板缓存时间，没有设置单位时，单位是秒<br>
+值<br>
+	正整数，或者带单位的正整数（单位可以是s,ms,m,h;分别表示秒，毫秒，分钟，小时）<br>
+	默认值为5秒<br>
+
+### tag\_syntax
+
+作用<br>
+	设置标签风格<#tag> 或者[#tag]<br>
+值<br>
+	auto\_detect，angle\_bracket，square\_bracket<br>
+默认值为angle\_bracket<br>
+
+### template\_loader
+
+作用<br>
+	设置自定义的模板加载器<br>
+值<br>
+	default,类名<br>
+	默认值 default<br>
 
