@@ -43,8 +43,8 @@ error（从 FreeMarker 2.3.1 版本开始可用）：这个变量在 recover 指
 检测不存在的值：使用name?? 或者(user.name)??<br>
 处理不存在的值：name!"unknown" 或者(user.name)!"unknown" 或者 name! 或者 (user.name)!<br>
 检测空值：使用name?has_content<br>
-${user!"Anonymous"}相当于<##if user??>${user}<##else>Anonymous</##if><br>
-${user!}则什么都不输出相当于<##if user??>${user}</##if><br>
+${user!"Anonymous"}相当于<#if user??>${user}<#else>Anonymous</#if><br>
+${user!}则什么都不输出相当于<#if user??>${user}</#if><br>
 
 ## 循环变量内建函数
 
@@ -63,71 +63,71 @@ item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两�
 
 ### include指令
 
-<##include filename><br>
-<##include filename options> <br>
+<#include filename><br>
+<#include filename options> <br>
 说明:options包括parse 和encoding <br>
     parse ：为true时，被包含的文件作用FTL模板处理,否则作为普通文本处理，默认为true。<br>
     encoding ：编码<br>
-<##include "*/footer.ftl"><br>
+<#include "*/footer.ftl"><br>
        *代表本目录或任一上级目录。<br>
-       如有"/foo/bar/template.ftl"，则上例按如下顺序查找/foo/bar/footer.ftl 、      /foo/footer.ftl、 /footer.ftl 。如有<##include "*/commons/footer.ftl"> ，会   按/foo/bar/commons/footer.ftl、/foo/commons/footer.ftl 、/commons/footer.ftl顺序查找。<br>
+       如有"/foo/bar/template.ftl"，则上例按如下顺序查找/foo/bar/footer.ftl 、      /foo/footer.ftl、 /footer.ftl 。如有<#include "*/commons/footer.ftl"> ，会   按/foo/bar/commons/footer.ftl、/foo/commons/footer.ftl 、/commons/footer.ftl顺序查找。<br>
 
 ### import指令
 
-<##import path as hash> <br>
+<#import path as hash> <br>
 例：<br>
 mylib.ftl:<br>
 
 ```
-<##macro copyright date><br>
+<#macro copyright date><br>
  <p>Copyright (C) ${date} Julia Smith. All rights reserved.</p><br>
-</##macro><br>
+</#macro><br>
 ```
 
 在另一个文件中：<br>
-<##import "/libs/mylib.ftl" as my> <br>
+<#import "/libs/mylib.ftl" as my> <br>
 <@my.copyright date="1999-2002"/> <br>
 
 
 ### noparse指令
 
 ```
-<##noparse>
- <##list animals as being>
+<#noparse>
+ <#list animals as being>
  <tr><td>${being.name}<td>${being.price} Euros
- </##list>
-</##noparse>
+ </#list>
+</#noparse>
 ```
 
 输出
 
 ```
-<##list animals as being>
+<#list animals as being>
  <tr><td>${being.name}<td>${being.price} Euros
- </##list>
+ </#list>
 ```
 
 ### assign指令
 
 ```
-<##assign name=value>
-<##assign name1=value1 name2=value2 ... nameN=v       alueN> 
-<##assign name=value in namespacehash>
-<##assign name> capture this </##assign>
-<##assign name in namespacehash> capture this</##assign>
+<#assign name=value>
+<#assign name1=value1 name2=value2 ... nameN=v       alueN> 
+<#assign name=value in namespacehash>
+<#assign name> capture this </#assign>
+<#assign name in namespacehash> capture this</#assign>
 ```
 
 在当前或指定命名空间内定义或替换已存在的顶级变量。如：some\_hash.subvar不行，而 some\_hash则可以。 Assign指令中包含的内容不会被输出，而是被存入指定的变量中。<br>
-<##assign var="你好"><br>
+<#assign var="你好"><br>
 ${var}<br>
 输出：你好。
 
 ### global指令
 
 ```
-<##global name=value>
-<##global name1=value1 name2=value2 ... nameN=v       alueN> 
-<##global name> capture this </##global>
+<#global name=value>
+<#global name1=value1 name2=value2 ... nameN=v       alueN> 
+<#global name> capture this </#global>
 ```
 
 在所有命名空间内定义或替换已存在的顶级变量。规则与assign一致。
@@ -135,9 +135,9 @@ ${var}<br>
 ### local 指令
 
 ```
-<##local name=value> 
-<##local name1=value1 name2=value2 ... nameN=valueN> 
-<##local name> capture this</##local>
+<#local name=value> 
+<#local name1=value1 name2=value2 ... nameN=valueN> 
+<#local name> capture this</#local>
 ```
 
 规则与assign一致，只在宏和方法的内部定义才会有作用。
@@ -324,7 +324,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 ### tag\_syntax
 
 作用<br>
-	设置标签风格<##tag> 或者[##tag]<br>
+	设置标签风格<#tag> 或者[#tag]<br>
 值<br>
 	auto\_detect，angle\_bracket，square\_bracket<br>
 默认值为angle\_bracket<br>
