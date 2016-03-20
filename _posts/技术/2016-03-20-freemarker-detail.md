@@ -5,7 +5,7 @@ category: 技术
 keywords: freemarker
 ---
 
-## 保留关键字
+# 保留关键字
 
 true：布尔值"true"<br>
 false：布尔值"false"<br>
@@ -18,7 +18,7 @@ in：由少数指令使用<br>
 using：由少数指令使用<br>
 如果你的变量名包含一些符号时，比如 foo-bar，你编写${foo-bar},FreeMarker 可能会认为是从 foo 中减去 bar,这时可以使用${. vars["foo-bar"]}<br>
 
-## 特殊变量
+# 特殊变量
 
 特殊变量是由 FreeMarker 引擎自己定义的变量。要访问它们，你可以使用.variable\_name 语法。比如，你不能仅仅写 version，而必须写.version。支持的特殊变量有：<br>
 data\_model：你可以使用来直接访问数据模型的哈希表。也就是，你使用global 指令定义在这里不可见的的变量。<br>
@@ -38,7 +38,7 @@ main\_template_name：顶级模板的名称 (从 FreeMarker 2.3.23 版本开始�
 url\_escaping\_charset（从 FreeMarker 2.3.1 版本开始可用）： URL 转义的字符集的名称。<br>
 error（从 FreeMarker 2.3.1 版本开始可用）：这个变量在 recover 指令体中可以访问，它存储了我们恢复错的错误信息。<br>
 
-## 非空判断
+# 非空判断
 
 检测不存在的值：使用name?? 或者(user.name)??<br>
 处理不存在的值：name!"unknown" 或者(user.name)!"unknown" 或者 name! 或者 (user.name)!<br>
@@ -46,7 +46,7 @@ error（从 FreeMarker 2.3.1 版本开始可用）：这个变量在 recover 指
 ${user!"Anonymous"}相当于<#if user??>${user}<#else>Anonymous</#if><br>
 ${user!}则什么都不输出相当于<#if user??>${user}</#if><br>
 
-## 循环变量内建函数
+# 循环变量内建函数
 
 counter	从1开始的索引<br>
 has\_next	是否还有下一项<br>
@@ -59,9 +59,9 @@ item\_parity	返回字符串值 "odd" 或 "even"<br>
 item\_parity\_cap	返回字符串值 "Odd" 或 "Even"<br>
 item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两个值来循环<br>
 
-## 常用指令
+# 常用指令
 
-### include指令
+## include指令
 
 <#include filename><br>
 <#include filename options> <br>
@@ -72,7 +72,7 @@ item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两�
        *代表本目录或任一上级目录。<br>
        如有"/foo/bar/template.ftl"，则上例按如下顺序查找/foo/bar/footer.ftl 、      /foo/footer.ftl、 /footer.ftl 。如有<#include "*/commons/footer.ftl"> ，会   按/foo/bar/commons/footer.ftl、/foo/commons/footer.ftl 、/commons/footer.ftl顺序查找。<br>
 
-### import指令
+## import指令
 
 <#import path as hash> <br>
 例：<br>
@@ -89,7 +89,7 @@ mylib.ftl:<br>
 <@my.copyright date="1999-2002"/> <br>
 
 
-### noparse指令
+## noparse指令
 
 ```
 <#noparse>
@@ -107,7 +107,7 @@ mylib.ftl:<br>
  </#list>
 ```
 
-### assign指令
+## assign指令
 
 ```
 <#assign name=value>
@@ -122,7 +122,7 @@ mylib.ftl:<br>
 ${var}<br>
 输出：你好。
 
-### global指令
+## global指令
 
 ```
 <#global name=value>
@@ -132,7 +132,7 @@ ${var}<br>
 
 在所有命名空间内定义或替换已存在的顶级变量。规则与assign一致。
 
-### local 指令
+## local 指令
 
 ```
 <#local name=value> 
@@ -142,21 +142,21 @@ ${var}<br>
 
 规则与assign一致，只在宏和方法的内部定义才会有作用。
 
-## springmvc 配置参数
+# springmvc 配置参数
 
-### locale
+## locale
 
 作用<br>
 设置默认地区，主要影响数字、日期输出格式，request中没有指定地区时模板查找值<br>
 例如：eh_US，zh_CN<br>
 
-### classic\_compatible
+## classic\_compatible
 
 作用<br>
 兼容旧版freemarker习惯，不建议使用，会导致一些问题，比如include必须用绝对路径值<br>
 "true", "false" 或者 "yes", "no" 或者 "t", "f" 或者  "y", "n"<br>
 
-### template\_exception\_handler
+## template\_exception\_handler
 
 作用<br>
 	模板异常处理器<br>
@@ -165,7 +165,7 @@ rethrow，debug，html_debug，ignore<br>
 也可以是类名<br>
 默认是debug<br>
 
-### arithmetic\_engine
+## arithmetic\_engine
 
 作用<br>
 数学运算引擎<br>
@@ -173,24 +173,24 @@ rethrow，debug，html_debug，ignore<br>
 bigdecimal,conservative<br>
 默认值bigdecimal<br>
 
-### object\_wrapper
+## object\_wrapper
 
 作用<br>
 对象包装器<br>
 值<br>
 default, default_2_3_0，simple，beans，jython<br>
 
-### number\_format
+## number\_format
 
 作用<br>
 	设置默认数字输出格式<br>
 值<br>
 	number，currency，percent，computer<br>
-也可以 DecimalFormat 类型(比如"0.##")<br>
+也可以 DecimalFormat 类型(比如"0.#")<br>
 具体使用参考 <br>
 http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-external=true
 
-### boolean\_format
+## boolean\_format
 
 作用<br>
 	设置默认布尔值输出格式<br>
@@ -198,7 +198,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	true时输出的值和false时输出的值使用英文逗号分隔<br>
 	比如true,false或者 是,否<br>
 	
-### date\_format,time\_format,datetime\_format
+## date\_format,time\_format,datetime\_format
 
 作用<br>
 	设置默认时间、日期输出格式<br>
@@ -207,7 +207,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	也可以是表达式 比如yyyy-MM-dd hh:mm:ss a或者yyyy-MM-dd HH:mm:ss<br>
 	
 	
-### time\_zone
+## time\_zone
 
 作用<br>
 	设置时区<br>
@@ -215,21 +215,21 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	GMT+8:00，Asia/Shanghai<br>
 默认为系统时区和设置的locale无关<br>
  
-### sql\_date\_and\_time\_time\_zone
+## sql\_date\_and\_time\_time\_zone
 
 作用<br>
 	设置java.sql.Date的时区<br>
 值<br>
 	GMT+8:00，Asia/Shanghai<br>
 	
-### output\_encoding
+## output\_encoding
 
 作用<br>
 	设置FreeMarker输出的字符集<br>
 值<br>
 	utf-8，gb2312<br>
 	
-### url\_escaping\_charset
+## url\_escaping\_charset
 
 作用<br>
 	设置URL转义字符集<br>
@@ -237,7 +237,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	UTF-8，GB2312,ISO-8859-1<br>
 	默认为output_encoding中的值<br>
 	
-### auto\_flush
+## auto\_flush
 
 作用<br>
 	设置模板处理后自动刷新<br>
@@ -245,7 +245,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	true,false<br>
 	默认值true<br>
 
-### new\_builtin\_class\_resolver
+## new\_builtin\_class\_resolver
 
 作用<br>
 	设置?new内建函数使用范围?new()<br>
@@ -255,7 +255,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	默认是safer<br>
 	如果值包含点则当作类名使用<br>
 	
-### show\_error\_tips
+## show\_error\_tips
 
 作用<br>
 	控制是否显示错误提示<br>
@@ -263,7 +263,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	true,false<br>
 	默认值true<br>
 	
-### api\_builtin\_enabled
+## api\_builtin\_enabled
 
 作用<br>
 	控制?api内建函数是否可用<br>
@@ -271,7 +271,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	true,false<br>
 	默认值false <br>
 	
-### auto\_import
+## auto\_import
 
 作用<br>
 	在所有模板中自动引入模板<br>
@@ -280,7 +280,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 多个引入用逗号隔开<br>
 /lib/form.ftl as f, /lib/widget as w, "/lib/odd name.ftl" as odd<br>
 
-### auto\_include
+## auto\_include
 
 作用<br>
 	在所有模板中自动包含模板<br>
@@ -289,7 +289,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 多个引入用逗号隔开<br>
 /include/common.ftl, "/include/evil name.ftl"<br>
 
-### default\_encoding
+## default\_encoding
 
 作用<br>
 	设置默认编码，如果不设置，可能会导致切换到不同环境时产生乱码问题<br>
@@ -297,7 +297,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	UTF-8,ISO-8859-1,GB2312<br>
 	默认值为操作系统的编码<br>
 
-### localized\_lookup
+## localized\_lookup
 
 作用<br>
 	控制模板本地化查找是否可用，比如locale设置为zh\_CN加载模板foo.ftl时，freemarker自动查找foo\_zh\_CN.ftl,foo\_zh.ftl,foo.ftl并返回找到的第一个<br>
@@ -305,7 +305,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	true,false<br>
 	默认值为true<br>
 	
-### whitespace\_stripping
+## whitespace\_stripping
 
 作用<br>
 	控制是否删除多余空格<br>
@@ -313,7 +313,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	true,false<br>
 	默认值为true<br>
 	
-### template\_update\_delay
+## template\_update\_delay
 
 作用<br>
 	设置模板缓存时间，没有设置单位时，单位是秒<br>
@@ -321,7 +321,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	正整数，或者带单位的正整数（单位可以是s,ms,m,h;分别表示秒，毫秒，分钟，小时）<br>
 	默认值为5秒<br>
 
-### tag\_syntax
+## tag\_syntax
 
 作用<br>
 	设置标签风格<#tag> 或者[#tag]<br>
@@ -329,7 +329,7 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	auto\_detect，angle\_bracket，square\_bracket<br>
 默认值为angle\_bracket<br>
 
-### template\_loader
+## template\_loader
 
 作用<br>
 	设置自定义的模板加载器<br>
