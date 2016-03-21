@@ -69,8 +69,8 @@ item\_cycle		可以指定何值来代替 "odd" 和 "even"，允许多余两�
     parse ：为true时，被包含的文件作用FTL模板处理,否则作为普通文本处理，默认为true。<br>
     encoding ：编码<br>
 <#include "\*/footer.ftl"><br>
-       *代表本目录或任一上级目录。<br>
-       如有"/foo/bar/template.ftl"，则上例按如下顺序查找/foo/bar/footer.ftl 、      /foo/footer.ftl、 /footer.ftl 。如有<#include "*/commons/footer.ftl"> ，会   按/foo/bar/commons/footer.ftl、/foo/commons/footer.ftl 、/commons/footer.ftl顺序查找。<br>
+       \*代表本目录或任一上级目录。<br>
+       如有"/foo/bar/template.ftl"，则上例按如下顺序查找/foo/bar/footer.ftl 、      /foo/footer.ftl、 /footer.ftl 。如有<#include "\*/commons/footer.ftl"> ，会   按/foo/bar/commons/footer.ftl、/foo/commons/footer.ftl 、/commons/footer.ftl顺序查找。<br>
 
 ### import指令
 
