@@ -16,7 +16,7 @@ lte：比较运算符"小于或等于"<br>
 as：由少数指令使用<br>
 in：由少数指令使用<br>
 using：由少数指令使用<br>
-如果你的变量名包含一些符号时，比如 foo-bar，你编写${foo-bar},FreeMarker 可能会认为是从 foo 中减去 bar,这时可以使用${. vars["foo-bar"]}<br>
+如果你的变量名包含一些符号时，比如 foo-bar，你编写${foo-bar},FreeMarker 可能会认为是从 foo 中减去 bar,这时可以使用${.vars["foo-bar"]}<br>
 
 ## 特殊变量
 
@@ -111,7 +111,7 @@ mylib.ftl:<br>
 
 ```
 <#assign name=value>
-<#assign name1=value1 name2=value2 ... nameN=v       alueN> 
+<#assign name1=value1 name2=value2 ... nameN=valueN> 
 <#assign name=value in namespacehash>
 <#assign name> capture this </#assign>
 <#assign name in namespacehash> capture this</#assign>
@@ -126,7 +126,7 @@ ${var}<br>
 
 ```
 <#global name=value>
-<#global name1=value1 name2=value2 ... nameN=v       alueN> 
+<#global name1=value1 name2=value2 ... nameN=valueN> 
 <#global name> capture this </#global>
 ```
 
@@ -148,7 +148,7 @@ ${var}<br>
 
 作用<br>
 设置默认地区，主要影响数字、日期输出格式，request中没有指定地区时模板查找值<br>
-例如：eh_US，zh_CN<br>
+例如：eh\_US，zh\_CN<br>
 
 ### classic\_compatible
 
