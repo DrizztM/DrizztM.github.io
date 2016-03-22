@@ -337,3 +337,48 @@ http://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html?is-externa
 	default,类名<br>
 	默认值 default<br>
 
+## 宏定义
+
+格式：<br>
+<#macro name param1 param2 ... paramN><br>
+ ...<br>
+</#macro><br>
+name：宏变量的名称。 <br>
+param1，param2 等： 局部变量的名称，存储参数的值，在= 号后面的默认值（表达式）可选。默认值也可以是另外一个参数，比如：<#macro section title label=title>。<br>
+
+例子：<br>
+<#macro test><br>
+ Test text<br>
+</#macro><br>
+
+调用方式：<br>
+<@test/><br>
+
+输出：<br>
+Test text<br>
+
+<#macro test foo bar baaz><br>
+ Test text, and the params: ${foo}, ${bar}, ${baaz}<br>
+</#macro><br>
+
+调用方式：<br>
+<@test "a" "b" 5*5-2/><br>
+<@test bar="b" foo="a" baaz=5*5-2/><br>
+
+输出都是：<br>
+Test text, and the params: a, b, 23
+
+nested 指令执行自定义指令开始和结束标签中间的模板片段。<br>
+<#macro do_twice><br>
+ 1. <#nested><br>
+ 2. <#nested><br>
+</#macro><br>
+
+调用方式：<br>
+<@do\_twice>something</@do\_twice>
+
+输出：<br>
+ 1. something
+ 2. something
+
+
