@@ -13,15 +13,15 @@ keywords: server
 /*
  * Copyright 2013 The Netty Project
  *
- * The Netty Project licenses this file to you under the Apache License,
+ * The Netty Project licenses this file to you under the Apache License，
  * version 2.0 (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at:
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * Unless required by applicable law or agreed to in writing， software
+ * distributed under the License is distributed on an "AS IS" BASIS， WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND， either express or implied. See the
  * License for the specific language governing permissions and limitations
  * under the License.
  */
@@ -47,31 +47,31 @@ public class DefaultThreadFactory implements ThreadFactory {
     private final int priority;
 
     public DefaultThreadFactory(Class<?> poolType) {
-        this(poolType, false, Thread.NORM_PRIORITY);
+        this(poolType， false， Thread.NORM_PRIORITY);
     }
 
     public DefaultThreadFactory(String poolName) {
-        this(poolName, false, Thread.NORM_PRIORITY);
+        this(poolName， false， Thread.NORM_PRIORITY);
     }
 
-    public DefaultThreadFactory(Class<?> poolType, boolean daemon) {
-        this(poolType, daemon, Thread.NORM_PRIORITY);
+    public DefaultThreadFactory(Class<?> poolType， boolean daemon) {
+        this(poolType， daemon， Thread.NORM_PRIORITY);
     }
 
-    public DefaultThreadFactory(String poolName, boolean daemon) {
-        this(poolName, daemon, Thread.NORM_PRIORITY);
+    public DefaultThreadFactory(String poolName， boolean daemon) {
+        this(poolName， daemon， Thread.NORM_PRIORITY);
     }
 
-    public DefaultThreadFactory(Class<?> poolType, int priority) {
-        this(poolType, false, priority);
+    public DefaultThreadFactory(Class<?> poolType， int priority) {
+        this(poolType， false， priority);
     }
 
-    public DefaultThreadFactory(String poolName, int priority) {
-        this(poolName, false, priority);
+    public DefaultThreadFactory(String poolName， int priority) {
+        this(poolName， false， priority);
     }
 
-    public DefaultThreadFactory(Class<?> poolType, boolean daemon, int priority) {
-        this(toPoolName(poolType), daemon, priority);
+    public DefaultThreadFactory(Class<?> poolType， boolean daemon， int priority) {
+        this(toPoolName(poolType)， daemon， priority);
     }
 
     private static String toPoolName(Class<?> poolType) {
@@ -94,7 +94,7 @@ public class DefaultThreadFactory implements ThreadFactory {
         }
     }
 
-    public DefaultThreadFactory(String poolName, boolean daemon, int priority) {
+    public DefaultThreadFactory(String poolName， boolean daemon， int priority) {
         if (poolName == null) {
             throw new NullPointerException("poolName");
         }
@@ -110,7 +110,7 @@ public class DefaultThreadFactory implements ThreadFactory {
 
     @Override
     public Thread newThread(Runnable r) {
-        Thread t = newThread(new DefaultRunnableDecorator(r), prefix + nextId.incrementAndGet());
+        Thread t = newThread(new DefaultRunnableDecorator(r)， prefix + nextId.incrementAndGet());
         try {
             if (t.isDaemon()) {
                 if (!daemon) {
@@ -131,8 +131,8 @@ public class DefaultThreadFactory implements ThreadFactory {
         return t;
     }
 
-    protected Thread newThread(Runnable r, String name) {
-        return new FastThreadLocalThread(r, name);
+    protected Thread newThread(Runnable r， String name) {
+        return new FastThreadLocalThread(r， name);
     }
 
     private static final class DefaultRunnableDecorator implements Runnable {
@@ -162,15 +162,15 @@ public class DefaultThreadFactory implements ThreadFactory {
 /*
  * Copyright 2013 The Netty Project
  *
- * The Netty Project licenses this file to you under the Apache License,
+ * The Netty Project licenses this file to you under the Apache License，
  * version 2.0 (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at:
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * Unless required by applicable law or agreed to in writing， software
+ * distributed under the License is distributed on an "AS IS" BASIS， WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND， either express or implied. See the
  * License for the specific language governing permissions and limitations
  * under the License.
  */
@@ -195,31 +195,31 @@ public class DefaultThreadFactory implements ThreadFactory {
 	private final int priority;
 
 	public DefaultThreadFactory(Class<?> poolType) {
-		this(poolType, false, Thread.NORM_PRIORITY);
+		this(poolType， false， Thread.NORM_PRIORITY);
 	}
 
 	public DefaultThreadFactory(String poolName) {
-		this(poolName, false, Thread.NORM_PRIORITY);
+		this(poolName， false， Thread.NORM_PRIORITY);
 	}
 
-	public DefaultThreadFactory(Class<?> poolType, boolean daemon) {
-		this(poolType, daemon, Thread.NORM_PRIORITY);
+	public DefaultThreadFactory(Class<?> poolType， boolean daemon) {
+		this(poolType， daemon， Thread.NORM_PRIORITY);
 	}
 
-	public DefaultThreadFactory(String poolName, boolean daemon) {
-		this(poolName, daemon, Thread.NORM_PRIORITY);
+	public DefaultThreadFactory(String poolName， boolean daemon) {
+		this(poolName， daemon， Thread.NORM_PRIORITY);
 	}
 
-	public DefaultThreadFactory(Class<?> poolType, int priority) {
-		this(poolType, false, priority);
+	public DefaultThreadFactory(Class<?> poolType， int priority) {
+		this(poolType， false， priority);
 	}
 
-	public DefaultThreadFactory(String poolName, int priority) {
-		this(poolName, false, priority);
+	public DefaultThreadFactory(String poolName， int priority) {
+		this(poolName， false， priority);
 	}
 
-	public DefaultThreadFactory(Class<?> poolType, boolean daemon, int priority) {
-		this(toPoolName(poolType), daemon, priority);
+	public DefaultThreadFactory(Class<?> poolType， boolean daemon， int priority) {
+		this(toPoolName(poolType)， daemon， priority);
 	}
 
 	private static String toPoolName(Class<?> poolType) {
@@ -244,7 +244,7 @@ public class DefaultThreadFactory implements ThreadFactory {
 		}
 	}
 
-	public DefaultThreadFactory(String poolName, boolean daemon, int priority) {
+	public DefaultThreadFactory(String poolName， boolean daemon， int priority) {
 		if (poolName == null) {
 			throw new NullPointerException("poolName");
 		}
@@ -261,7 +261,7 @@ public class DefaultThreadFactory implements ThreadFactory {
 
 	@Override
 	public Thread newThread(Runnable r) {
-		Thread t = newThread(new DefaultRunnableDecorator(r),
+		Thread t = newThread(new DefaultRunnableDecorator(r)，
 				prefix + nextId.incrementAndGet());
 		try {
 			t.setDaemon(true);
@@ -275,8 +275,8 @@ public class DefaultThreadFactory implements ThreadFactory {
 		return t;
 	}
 
-	protected Thread newThread(Runnable r, String name) {
-		return new FastThreadLocalThread(r, name);
+	protected Thread newThread(Runnable r， String name) {
+		return new FastThreadLocalThread(r， name);
 	}
 
 	private static final class DefaultRunnableDecorator implements Runnable {
@@ -301,4 +301,5 @@ public class DefaultThreadFactory implements ThreadFactory {
 ```
 
 主要是这句代码：t.setDaemon(true);<br>
-让守护进程一直开启。
+就是将当前进程变成后台进程。<br>
+如果对某个线程对象在启动(调用start方法)之前调用了setDaemon(true)方法，这个线程就变成了后台线程。对java程序来说，只要还有一个前台线程在运行，这个进程就不会结束，如果一个进程中只有后台线程运行，这个进程会结束。
