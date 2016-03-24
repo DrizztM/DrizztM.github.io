@@ -369,7 +369,7 @@ Test text<br>
 Test text, and the params: a, b, 23
 
 nested 指令执行自定义指令开始和结束标签中间的模板片段。<br>
-<#macro do_twice><br>
+<#macro do\_twice><br>
  1. <#nested><br>
  2. <#nested><br>
 </#macro><br>
