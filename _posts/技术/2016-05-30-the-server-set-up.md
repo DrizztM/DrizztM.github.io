@@ -202,3 +202,23 @@ my.cnf地址
 
          /etc/rc.d/init.d/（启动脚本文件mysql的目录） 
 
+## 安装redis
+
+1.首先为yum添加epel源
+
+```
+yum install epel-release
+```
+
+2.安装redis
+
+```
+yum install redis
+```
+
+3.启动redis，并设定开机自动启动
+
+```
+service redis start
+chkconfig redis on
+```
