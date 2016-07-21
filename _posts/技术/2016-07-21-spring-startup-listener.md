@@ -19,3 +19,20 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 
 }
 ```
+
+但是这个时候，会存在一个问题，在web 项目中（spring mvc），系统会存在两个容器，一个是root application context ,另一个就是我们自己的 projectName-servlet  context（作为root application context的子容器）。<br>
+这种情况下，就会造成onApplicationEvent方法被执行两次。为了避免上面提到的问题，我们可以只在root application context初始化完成后调用逻辑代码，其他的容器的初始化完成，则不做任何处理，修改后代码如下：
+
+```java
+@Component
+public class Init implements ApplicationListener<ContextRefreshedEvent> {
+
+    private static Logger logger = Logger.getLogger(Init.class);
+
+    public void onApplicationEvent(ContextRefreshedEvent arg0) {
+	    if(event.getApplicationContext().getParent() == null){
+	        logger.error("初始化项目");
+        }
+    }
+}
+```
