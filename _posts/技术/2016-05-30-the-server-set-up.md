@@ -222,3 +222,12 @@ yum install redis
 service redis start
 chkconfig redis on
 ```
+
+4.取消redis绑定ip
+
+修改配置文件
+
+```
+vi /etc/redis.conf
+#bind 127.0.0.1	这行加上注释
+```
