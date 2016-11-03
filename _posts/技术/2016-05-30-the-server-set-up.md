@@ -223,9 +223,7 @@ service redis start
 chkconfig redis on
 ```
 
-4.取消redis绑定ip
-
-修改配置文件
+4.取消redis绑定ip，修改配置文件
 
 ```
 vi /etc/redis.conf
