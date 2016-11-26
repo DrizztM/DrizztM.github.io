@@ -2,7 +2,7 @@
 layout: post
 title: CentOS升级openssl为最新版
 category: 技术
-keywords: 优化
+keywords: linux
 ---
 
 ```
