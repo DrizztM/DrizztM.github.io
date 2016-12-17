@@ -22,7 +22,7 @@ SSLv3被曝出存在协议漏洞：“通过此漏洞可以窃取客户端与ser
 <br>
 ```
 vi tomcat/conf/server.xml
-加上配置
+
 setProtocol="TLSv1.2" 
 sslEnabledProtocols="TLSv1.2"
 ```
