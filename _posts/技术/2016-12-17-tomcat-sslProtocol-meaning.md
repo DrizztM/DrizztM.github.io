@@ -4,7 +4,12 @@ title: tomcat中sslProtocol含义
 category: 技术
 keywords: server
 ---
+```
+vi tomcat/conf/server.xml
 
+setProtocol="TLSv1.2" 
+sslEnabledProtocols="TLSv1.2"
+```
 ## 各种配置含义
 1. setProtocol="TLS" will enable SSLv3 and TLSv1
 2. setProtocol="TLSv1.2" will enable SSLv3, TLSv1, TLSv1.1 and TLS v1.2
@@ -19,9 +24,3 @@ SSLv3被曝出存在协议漏洞：“通过此漏洞可以窃取客户端与ser
 <br>
 <br>
 关闭SSLv3
-```
-vi tomcat/conf/server.xml
-
-setProtocol="TLSv1.2" 
-sslEnabledProtocols="TLSv1.2"
-```
