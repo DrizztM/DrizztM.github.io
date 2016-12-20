@@ -125,9 +125,7 @@ make install
 
 修改tomcat脚本catalina.sh，最上面加上一行，不然会报找不到类库的错误：
 
-```
-CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/usr/local/tomcat-native/lib"
-```
+CATALINA\_OPTS="$CATALINA\_OPTS -Djava.library.path=/usr/local/tomcat-native/lib"
 
 <font color="red">以上配置完毕后tomcat成功开启apr模式。</font>
 
@@ -135,7 +133,7 @@ CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/usr/local/tomcat-native/lib"
 
 1.删除webapps下所有的应用。
 
-2.删除conf/tomcat_users.xml，以及server.xml中关于tomcat_users.xml的引用，旨在增强安全性。（去掉pathname="conf/tomcat-users.xml"）
+2.删除conf/tomcat\_users.xml，以及server.xml中关于tomcat\_users.xml的引用，旨在增强安全性。（去掉pathname="conf/tomcat-users.xml"）
 
 3.配置conf/logging.properties，删除所有的日志配置项，将日志输出级别调整到INFO（改成WARNING后看不到启动信息了）。样例如下：
 
@@ -149,5 +147,5 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
 4.bin目录下增加setenv.sh,进行jdk调优，8核8G服务器的配置如下：
 
 ```
-JAVA_OPTS="-server -Xms1100M -Xmx1100M -Xss128k -XX:NewSize=300M -XX:MaxNewSize=400M -XX:MaxPermSize=128M   -XX:+UseParallelGC"
+JAVA\_OPTS="-server -Xms1100M -Xmx1100M -Xss128k -XX:NewSize=300M -XX:MaxNewSize=400M -XX:MaxPermSize=128M   -XX:+UseParallelGC"
 ```
