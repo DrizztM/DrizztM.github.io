@@ -57,7 +57,7 @@ make
 
 make install
 
-<font color="red">以下更换系统自带的openssl，千万不要删除自带的openssl，会导致ssh无法连接！</font>
+<font color="red">以下为更换系统自带的openssl，千万不要删除自带的openssl，会导致ssh无法连接！</font>
 
 mv /usr/bin/openssl /usr/bin/openssl.OFF
 
@@ -127,4 +127,27 @@ make install
 
 ```
 CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/usr/local/tomcat-native/lib"
+```
+
+<font color="red">以上配置完毕后tomcat成功开启apr模式。</font>
+
+## tomcat调优
+
+1.删除webapps下所有的应用。
+
+2.删除conf/tomcat_users.xml，以及server.xml中关于tomcat_users.xml的引用，旨在增强安全性。（去掉pathname="conf/tomcat-users.xml"）
+
+3.配置conf/logging.properties，删除所有的日志配置项，将日志输出级别调整到INFO（改成WARNING后看不到启动信息了）。样例如下：
+
+```
+handlers = java.util.logging.ConsoleHandler
+.handlers = java.util.logging.ConsoleHandler
+java.util.logging.ConsoleHandler.level = INFO
+java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
+```
+
+4.bin目录下增加setenv.sh,进行jdk调优，8核8G服务器的配置如下：
+
+```
+JAVA_OPTS="-server -Xms1100M -Xmx1100M -Xss128k -XX:NewSize=300M -XX:MaxNewSize=400M -XX:MaxPermSize=128M   -XX:+UseParallelGC"
 ```
