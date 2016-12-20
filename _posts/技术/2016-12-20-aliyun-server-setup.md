@@ -146,6 +146,4 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
 
 4.bin目录下增加setenv.sh,进行jdk调优，8核8G服务器的配置如下：
 
-```
 JAVA\_OPTS="-server -Xms1100M -Xmx1100M -Xss128k -XX:NewSize=300M -XX:MaxNewSize=400M -XX:MaxPermSize=128M   -XX:+UseParallelGC"
-```
