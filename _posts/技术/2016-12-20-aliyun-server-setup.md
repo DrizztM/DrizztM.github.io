@@ -125,5 +125,6 @@ make install
 
 修改tomcat脚本catalina.sh，最上面加上一行，不然会报找不到类库的错误：
 
+```
 CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=/usr/local/tomcat-native/lib"
-
+```
