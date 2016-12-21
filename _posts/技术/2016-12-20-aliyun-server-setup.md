@@ -149,6 +149,7 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
 JAVA\_OPTS="-server -Xms4G -Xmx4G -Xss256k -XX:+UseParallelOldGC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/dump -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xloggc:/home/dump/heap_trace.txt -XX:NewSize=1G -XX:MaxNewSize=1G"
 
 5.Tomcat 8启动很慢，且日志上无任何错误，在日志中查看到如下信息
+
 ```
 INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [57,733] milliseconds.
 ```

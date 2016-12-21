@@ -43,7 +43,8 @@ all_squash 所有登录用户指定为nobody
 no_all_squash 以当前登录的用户所设定的权限(默认设定)
 anonuid  在使用all_squash时的选择，可以对登录的帐号指定为指定的用户ID帐号
 anougid  在使用all_squash时的选择，可以对登录的帐号指定为指定的组ID帐号
-root_squash root用户指定为nobody    no_root_squash：（允许远程用户以root帐号登录(比较不安全)）不讲root用户及所属用户组映射为匿名用户或用户组，默认root是被映射为匿名用户的nfsnobody，所有即使开了rw写权限，客户机也使无法写入的，这个不映射为匿名用户，还保留原来的用户权限就可以读写了，因为一般都是用root用户登录的。
+root_squash root用户指定为nobody    
+no_root_squash：（允许远程用户以root帐号登录(比较不安全)）不将root用户及所属用户组映射为匿名用户或用户组，默认root是被映射为匿名用户的nfsnobody，所以即使开了rw写权限，客户机也使无法写入的，这个不映射为匿名用户，还保留原来的用户权限就可以读写了，因为一般都是用root用户登录的。
 注意：当客机是否有写权限时，还要看该目录对该用户有没有开放写入权限
 ```
 
