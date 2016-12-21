@@ -147,3 +147,30 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
 4.bin目录下增加setenv.sh,进行jdk调优，8核8G服务器的配置如下：
 
 JAVA\_OPTS="-server -Xms4G -Xmx4G -Xss256k -XX:+UseParallelOldGC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/dump -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xloggc:/home/dump/heap_trace.txt -XX:NewSize=1G -XX:MaxNewSize=1G"
+
+5.Tomcat 8启动很慢，且日志上无任何错误，在日志中查看到如下信息
+```
+INFO: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [57,733] milliseconds.
+```
+
+打开$JAVA\_PATH/jre/lib/security/java.security这个文件，找到下面的内容：
+
+securerandom.source=file:/dev/urandom
+
+替换成
+
+securerandom.source=file:/dev/./urandom
+
+6.并发数调整
+
+修改server.xml文件
+```
+<Connector port="8080" protocol="org.apache.coyote.http11.Http11AprProtocol"
+               maxThreads="2000"
+               minSpareThreads="1000"
+               enableLookups="false"
+               URIEncoding="utf-8"
+               acceptCount="1000"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+```
