@@ -176,3 +176,58 @@ securerandom.source=file:/dev/./urandom
                connectionTimeout="20000"
                redirectPort="8443" />
 ```
+
+## 设置nfs共享目录
+
+10.25.196.23—->a机器<br>
+10.25.156.112——->b机器
+
+以下命令全部在10.25.196.23上操作。
+
+查看nfs是否安装：<br>
+rpm -q nfs-utils
+
+yum install nfs-utils
+
+vi /etc/exports
+
+/home/images 10.25.156.112(rw,no_root_squash,async)
+
+启动服务
+
+```
+1.启动rpcbind服务 启动nfs服务  (且rpcbind一定要先于nfs启动)  
+    service rpcbind start
+    service nfs start
+2. 停止服务
+停止NFS服务器前，需要先停止NFS服务再停止rpcbind服务。
+    service rpcbind stop
+    service nfs stop
+3.自动启动NFS服务
+    chkconfig rpcbind on
+    chkconfig nfs on
+4.查看所有输出的共享目录    
+    showmount -e 10.25.196.23
+    输出以下结果：
+        Export list for 10.25.196.23:
+		/home/images 10.25.156.112
+```
+
+挂载
+
+```
+1.ssh登陆到另一台机器b：
+	ssh root@10.25.156.112
+	mount -t nfs 10.25.196.23:/home/images /home/images
+	-t:指定挂载设备的文件类型（nfs是网络文件系统）
+	10.25.196.23：nfs服务器ip地址
+	/home/images：nfs服务器的共享目录
+	/home/images：挂载在本地的目录
+2.启动时自动连接nfs服务器
+	vi /etc/fstab
+	10.25.196.23:/home/images /home/images nfs defaults 0 0
+	在a机器上建立文件test.txt,然后发现b机器有了同样的文件，nfs服务端和客户端正常同步。
+```
+
+## redis安装
+
