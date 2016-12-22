@@ -168,11 +168,11 @@ securerandom.source=file:/dev/./urandom
 
 ```
 <Connector port="8080" protocol="org.apache.coyote.http11.Http11AprProtocol"
-               maxThreads="2000"
-               minSpareThreads="1000"
+               maxThreads="1000"
+               minSpareThreads="500"
                enableLookups="false"
                URIEncoding="utf-8"
-               acceptCount="1000"
+               acceptCount="500"
                connectionTimeout="20000"
                redirectPort="8443" />
 ```
@@ -204,13 +204,13 @@ vi /etc/exports
     service rpcbind stop
     service nfs stop
 3.自动启动NFS服务
-    chkconfig rpcbind on
-    chkconfig nfs on
+    chkconfig --level 3 rpcbind on
+    chkconfig --level 3 nfs on
 4.查看所有输出的共享目录    
     showmount -e 10.25.196.23
     输出以下结果：
-        Export list for 10.25.196.23:
-		/home/images 10.25.156.112
+	Export list for 10.25.196.23:
+	/home/images 10.25.156.112
 ```
 
 挂载
@@ -231,3 +231,12 @@ vi /etc/exports
 
 ## redis安装
 
+cd /home/setup/
+
+tar zxvf redis-3.2.6.tar.gz
+
+cd redis-3.2.6
+
+make
+
+make install
