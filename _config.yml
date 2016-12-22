@@ -1,28 +1,50 @@
-permalink: /:year/:month/:day/:title.html
-markdown: redcarpet
-pygments: true
+# Site settings
+title: 马超的博客
+email: drizzt@aliyun.com
+description: > # this means to ignore newlines until "baseurl:"
+  马超的博客
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: http://blog.drizzt.cn # the base hostname & protocol for your site
+rss_url: /pages/feed.xml
+author: Drizzt
 
-kramdown:
-  input: GFM
+# Sidebar filter
+# Choose 'tag' or 'category' as filter in sidebar.
+filter: 'category'
+recent_num: 20
 
-# 作者信息
-author: 
-  name: 马超
-  email: drizzt@aliyun.com
-  link: http://blog.drizzt.cn
-  weibo: http://weibo.com/drizztblog
-  github: http://github.com/DrizztM
+# Social account
+twitter: drizzt
+weibo: drizztblog
+github: DrizztM
+instagram: drizzt
+linkedin: drizzt
 
-# 站点信息
-title: 马超的博客 
-description: 马超的博客
-url: http://blog.drizzt.cn
-rss_url: /pages/atom.xml
-
-# avatar头像及Favicon
+# avatar and Favicon
 avatar:  /assets/img/logo.png
 favicon:  /assets/img/logo.png
 
-# disqus 设置
+# disqus config
 disqus:
   shortname: drizztblog
+
+# google analytics config
+ga:
+  id: drizzt
+  url: drizzt
+
+# Build settings
+permalink: /:year/:month/:day/:title.html
+markdown: kramdown
+highlighter: rouge
+mathjax: disabled
+sass:
+  style: compressed
+
+# Jekyll Plugin
+# https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
