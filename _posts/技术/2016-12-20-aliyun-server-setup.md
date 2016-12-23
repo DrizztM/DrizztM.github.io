@@ -240,3 +240,82 @@ cd redis-3.2.6
 make
 
 make install
+
+cp redis-server /usr/local/bin/
+
+cp redis-cli  /usr/local/bin
+
+mv /home/setup/redis-3.2.6 /usr/local/redis
+
+cd /usr/local/redis
+
+vi redis.conf
+
+```
+bind 127.0.0.1 去掉这行
+daemonize yes  改为后台运行
+requirepass foobared  打开这个选项，设置密码
+```
+
+vi /etc/init.d/redis
+
+```
+# chkconfig: 2345 10 90
+# description: Start and Stop redis
+  
+PATH=/usr/local/bin:/sbin:/usr/bin:/bin
+  
+REDISPORT=6379 #实际环境而定
+EXEC=/usr/local/redis/src/redis-server #实际环境而定
+REDIS_CLI=/usr/local/redis/src/redis-cli #实际环境而定
+  
+PIDFILE=/var/run/redis.pid
+CONF="/usr/local/redis/redis.conf" #实际环境而定
+  
+case "$1" in
+        start)
+                if [ -f $PIDFILE ]
+                then
+                        echo "$PIDFILE exists, process is already running or crashed."
+                else
+                        echo "Starting Redis server..."
+                        $EXEC $CONF
+                fi
+                if [ "$?"="0" ]
+                then
+                        echo "Redis is running..."
+                fi
+                ;;
+        stop)
+                if [ ! -f $PIDFILE ]
+                then
+                        echo "$PIDFILE exists, process is not running."
+                else
+                        PID=$(cat $PIDFILE)
+                        echo "Stopping..."
+                        $REDIS_CLI -p $REDISPORT SHUTDOWN
+                        while [ -x $PIDFILE ]
+                        do
+                                echo "Waiting for Redis to shutdown..."
+                                sleep 1
+                        done
+                        echo "Redis stopped"
+                fi
+                ;;
+        restart|force-reload)
+                ${0} stop
+                ${0} start
+                ;;
+        *)
+                echo "Usage: /etc/init.d/redis {start|stop|restart|force-reload}" >&2
+             exitxit 1
+esac
+```
+
+chmod +x /etc/init.d/redis
+
+service redis start
+
+service redis stop
+  
+chkconfig redis on
