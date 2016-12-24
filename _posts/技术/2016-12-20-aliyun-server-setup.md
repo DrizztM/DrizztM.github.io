@@ -260,56 +260,82 @@ requirepass foobared  打开这个选项，设置密码
 vi /etc/init.d/redis
 
 ```
-# chkconfig: 2345 10 90
-# description: Start and Stop redis
-  
-PATH=/usr/local/bin:/sbin:/usr/bin:/bin
-  
-REDISPORT=6379 #实际环境而定
-EXEC=/usr/local/redis/src/redis-server #实际环境而定
-REDIS_CLI=/usr/local/redis/src/redis-cli #实际环境而定
-  
-PIDFILE=/var/run/redis.pid
-CONF="/usr/local/redis/redis.conf" #实际环境而定
-  
-case "$1" in
-        start)
-                if [ -f $PIDFILE ]
-                then
-                        echo "$PIDFILE exists, process is already running or crashed."
-                else
-                        echo "Starting Redis server..."
-                        $EXEC $CONF
-                fi
-                if [ "$?"="0" ]
-                then
-                        echo "Redis is running..."
-                fi
-                ;;
-        stop)
-                if [ ! -f $PIDFILE ]
-                then
-                        echo "$PIDFILE exists, process is not running."
-                else
-                        PID=$(cat $PIDFILE)
-                        echo "Stopping..."
-                        $REDIS_CLI -p $REDISPORT SHUTDOWN
-                        while [ -x $PIDFILE ]
-                        do
-                                echo "Waiting for Redis to shutdown..."
-                                sleep 1
-                        done
-                        echo "Redis stopped"
-                fi
-                ;;
-        restart|force-reload)
-                ${0} stop
-                ${0} start
-                ;;
-        *)
-                echo "Usage: /etc/init.d/redis {start|stop|restart|force-reload}" >&2
-             exitxit 1
+#!/bin/sh
+#chkconfig: 345 86 14
+#description: Startup and shutdown script for Redis
+ 
+PROGDIR=/usr/local/redis/src
+PROGNAME=redis-server
+DAEMON=$PROGDIR/$PROGNAME
+CONFIG=/usr/local/redis/redis.conf
+PIDFILE=/var/run/redis_6379.pid
+DESC="redis daemon"
+SCRIPTNAME=/etc/rc.d/init.d/redis
+ 
+start()
+{
+         if test -x $DAEMON
+         then
+        echo -e "Starting $DESC: $PROGNAME"
+                   if $DAEMON $CONFIG
+                   then
+                            echo -e "OK"
+                   else
+                            echo -e "failed"
+                   fi
+         else
+                   echo -e "Couldn't find Redis Server ($DAEMON)"
+         fi
+}
+ 
+stop()
+{
+         if test -e $PIDFILE
+         then
+                   echo -e "Stopping $DESC: $PROGNAME"
+                   if kill `cat $PIDFILE`
+                   then
+                            echo -e "OK"
+                   else
+                            echo -e "failed"
+                   fi
+         else
+                   echo -e "No Redis Server ($DAEMON) running"
+         fi
+}
+ 
+restart()
+{
+    echo -e "Restarting $DESC: $PROGNAME"
+    stop
+         start
+}
+ 
+list()
+{
+         ps aux | grep $PROGNAME
+}
+ 
+case $1 in
+         start)
+                   start
+        ;;
+         stop)
+        stop
+        ;;
+         restart)
+        restart
+        ;;
+         list)
+        list
+        ;;
+ 
+         *)
+        echo "Usage: $SCRIPTNAME {start|stop|restart|list}" >&2
+        exit 1
+        ;;
 esac
+exit 0
 ```
 
 chmod +x /etc/init.d/redis
