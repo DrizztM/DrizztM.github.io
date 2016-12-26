@@ -252,9 +252,11 @@ cd /usr/local/redis
 vi redis.conf
 
 ```
-bind 127.0.0.1 去掉这行
-daemonize yes  改为后台运行
-requirepass foobared  打开这个选项，设置密码
+tcp-backlog 1000 //改大一点
+bind 127.0.0.1 //绑定ip
+daemonize yes  //改为后台运行
+requirepass foobared  //打开这个选项，设置密码
+maxmemory 10gb //最大内存最好不要超过空闲内存的3/5，超过32GB会自动进入64位世界，指针长度*2，20%的空间会被指针消耗，性能略有影响
 ```
 
 vi /etc/init.d/redis
