@@ -14,11 +14,9 @@ filter: 'category'
 recent_num: 20
 
 # Social account
-twitter: drizzt
 weibo: drizztblog
 github: DrizztM
-instagram: drizzt
-linkedin: drizzt
+linkedin: drizztm
 
 # avatar and Favicon
 avatar:  /assets/img/logo.png
