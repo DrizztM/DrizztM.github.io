@@ -17,6 +17,6 @@ SELECT * from t where instr(id,'%0%')>0
 ```
 
 ```
-SELECT * from user_deal_record where userId LIKE '0%' or REVERSE(userId) LIKE REVERSE('%0')
+SELECT * from t where id LIKE '0%' or REVERSE(id) LIKE REVERSE('%0')
 这种走索引，效率最高（REVERSE:将字符串反过来查）
 ```
