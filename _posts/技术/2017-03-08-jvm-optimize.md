@@ -1,6 +1,6 @@
 ---
 layout: post
-title: JVM性能调优监控工具jps、jstack、jmap、jhat、jstat、hprof使用详解（转）
+title: JVM性能调优监控工具jps、jstack、jmap、jhat、jstat、hprof使用详解
 category: 技术
 keywords: java
 ---
@@ -44,14 +44,14 @@ jstack [option] [server-id@]remote-hostname-or-ip
 ```
 jstack可以定位到线程堆栈，根据堆栈信息我们可以定位到具体代码，所以它在JVM性能调优中使用得非常多。下面我们来一个实例找出某个Java进程中最耗费CPU的Java线程并定位堆栈信息，用到的命令有ps、top、printf、jstack、grep。<br>
 第一步先找出Java进程ID，我部署在服务器上的Java应用名称为mrf-center：
-```
+```linux
 root@ubuntu:/# ps -ef | grep mrf-center | grep -v grep
 root     21711     1  1 14:47 pts/3    00:02:10 java -jar mrf-center.jar
 ```
 得到进程ID为21711，第二步找出该进程内最耗费CPU的线程，可以使用ps -Lfp pid或者ps -mp pid -o THREAD, tid, time或者top -Hp pid，我这里用第三个，输出如下：
 <img src="/assets/img/0083.png"><br>
 TIME列就是各个Java线程耗费的CPU时间，CPU时间最长的是线程ID为21742的线程，用
-```
+```linux
 printf "%x\n" 21742
 ```
 得到21742的十六进制值为54ee，下面会用到。
