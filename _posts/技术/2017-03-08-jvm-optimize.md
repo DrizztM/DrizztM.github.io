@@ -19,7 +19,7 @@ jps [options] [hostid]
 -v 输出传入JVM的参数
 ```
 比如下面：
-```Bash
+```
 root@ubuntu:/# jps -m -l
 2458 org.artifactory.standalone.main.Main /usr/local/artifactory-2.2.5/etc/jetty.xml
 29920 com.sun.tools.hat.Main -port 9998 /tmp/dump.dat
