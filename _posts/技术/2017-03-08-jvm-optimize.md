@@ -5,7 +5,7 @@ category: 技术
 keywords: java
 ---
 
-## jps(Java Virtual Machine Process Status Tool)
+## 1.jps(Java Virtual Machine Process Status Tool)
 jps主要用来输出JVM中运行的进程状态信息。语法格式如下：
 ```
 jps [options] [hostid]
@@ -29,7 +29,7 @@ root@ubuntu:/# jps -m -l
 25687 com.sun.tools.hat.Main -port 9999 dump.dat
 21711 mrf-center.jar
 ```
-## jstack
+## 2.jstack
 jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：
 ```
 jstack [option] pid
@@ -78,7 +78,7 @@ synchronized(sigLock) {
 }
 ```
 它是轮询任务的空闲等待代码，上面的sigLock.wait(timeUntilContinue)就对应了前面的Object.wait()。
-## jmap（Memory Map）和jhat（Java Heap Analysis Tool）
+## 3.jmap（Memory Map）和jhat（Java Heap Analysis Tool）
 jmap用来查看堆内存使用状况，一般结合jhat使用。<br>
 jmap语法格式如下：
 ```
@@ -222,7 +222,7 @@ Server is ready.
 注意如果Dump文件太大，可能需要加上-J-Xmx512m这种参数指定最大堆内存，即jhat -J-Xmx512m -port 9998 /tmp/dump.dat。然后就可以在浏览器中输入主机地址:9998查看了：<br>
 <img src="/assets/img/0085.png"><br>
 上面红线框出来的部分大家可以自己去摸索下，最后一项支持OQL（对象查询语言）。
-## jstat（JVM统计监测工具）
+## 4.jstat（JVM统计监测工具）
 语法格式如下：
 ```
 jstat [ generalOption | outputOptions vmid [interval[s|ms] [count]] ]
@@ -253,7 +253,7 @@ YGC、YGT：年轻代GC次数和GC耗时
 FGC、FGCT：Full GC次数和Full GC耗时
 GCT：GC总耗时
 ```
-## hprof（Heap/CPU Profiling Tool）
+## 5.hprof（Heap/CPU Profiling Tool）
 hprof能够展现CPU使用率，统计堆内存使用情况。<br>
 语法格式如下：
 ```
