@@ -7,7 +7,7 @@ keywords: java
 
 ## 1.jps(Java Virtual Machine Process Status Tool)
 jps主要用来输出JVM中运行的进程状态信息。语法格式如下：
-```
+```shell
 jps [options] [hostid]
 ```
 如果不指定hostid就默认为当前主机或服务器。<br>
