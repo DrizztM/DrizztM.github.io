@@ -51,7 +51,7 @@ tar zxvf openssl-1.1.0c.tar.gz
 
 cd openssl-1.1.0c
 
-./config --prefix=/usr/local/openssl -fPIC no-gost no-shared no-zlib
+./config \--prefix=/usr/local/openssl -fPIC no-gost no-shared no-zlib
 
 make
 
