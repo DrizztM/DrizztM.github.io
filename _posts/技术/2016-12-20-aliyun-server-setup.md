@@ -81,7 +81,7 @@ tar zxvf apr-1.5.2.tar.gz
 
 cd apr-1.5.2
 
-./configure --prefix=/usr/local/apr
+./configure \--prefix=/usr/local/apr
 
 报错：rm: cannot remove `libtoolT': No such file or directory
 
@@ -89,7 +89,7 @@ cd apr-1.5.2
 
 $RM "$cfgfile" 改为 $RM -f "$cfgfile" 
 
-./configure --prefix=/usr/local/apr
+./configure \--prefix=/usr/local/apr
 
 make
 
@@ -103,7 +103,7 @@ tar zxvf apr-util-1.5.4.tar.gz
 
 cd apr-util-1.5.4
 
-./configure --with-apr=/usr/local/apr
+./configure \--with-apr=/usr/local/apr
 
 make
 
@@ -117,7 +117,7 @@ tar zxvf tomcat-native.tar.gz
 
 cd tomcat-native-1.2.10-src/native/
 
-./configure --prefix=/usr/local/tomcat-native --with-apr=/usr/local/apr --with-ssl=/usr/local/openssl
+./configure \--prefix=/usr/local/tomcat-native \--with-apr=/usr/local/apr \--with-ssl=/usr/local/openssl
 
 make
 
