@@ -14,11 +14,11 @@
       <li class="sidebar-tag active" data-filter="recent">最新文章</li>
       {% if site.filter == 'category' %}
         {% for category in site.categories %}
-          <li class="sidebar-tag" data-filter="{{ category}}">{{ category }}</li>
+          <li class="sidebar-tag">{{ category | first }}</li>
         {% endfor %}
       {% elsif site.filter == 'tag' %}
         {% for tag in site.tags %}
-          <li class="sidebar-tag" data-filter="{{ tag}}">{{ tag }}</li>
+          <li class="sidebar-tag">{{ tag | first }}</li>
         {% endfor %}
       {% endif %}
     </ul>
