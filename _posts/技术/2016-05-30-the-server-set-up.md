@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 阿里云服务器简单搭建
+title: 阿里云服务器利用yum搭建
 category: 技术
 keywords: server
 ---
