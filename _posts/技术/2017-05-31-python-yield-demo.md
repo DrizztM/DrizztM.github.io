@@ -25,3 +25,12 @@ pylines = grep(flog,'python')
 for line in pylines:
     print(line,)
 ```
+
+这段代码实现了tail -f warn.log | grep python的功能，具体执行顺序如下：<br>
+1. flog = tail(open('warn.log'))
+2. tail方法中的yield line
+3. pylines = grep(flog,'python')
+4. grep方法中的for line in lines:回到2
+5. grep方法中的yield line
+6. for line in pylines，回到5
+7. grep方法中的for line in lines:回到2
