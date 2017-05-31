@@ -34,3 +34,5 @@ for line in pylines:
 5. grep方法中的yield line
 6. for line in pylines，回到5
 7. grep方法中的for line in lines:回到2
+<br>
+总结一下：yield当时不会执行，仅仅返回一个生成器对象，当对这个对象调用next()(python3中是__next__())或者进行for循环时，才开始执行。
