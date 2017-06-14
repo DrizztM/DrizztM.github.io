@@ -26,7 +26,8 @@ for line in pylines:
     print(line,)
 ```
 
-这段代码实现了tail -f warn.log | grep python的功能，具体执行顺序如下：<br>
+这段代码实现了tail -f warn.log | grep python的功能，具体执行顺序如下：
+
 1. flog = tail(open('warn.log'))
 2. tail方法中的yield line
 3. pylines = grep(flog,'python')
@@ -34,5 +35,5 @@ for line in pylines:
 5. grep方法中的yield line
 6. for line in pylines，回到5
 7. grep方法中的for line in lines:回到2
-<br><br>
+
 总结一下：yield当时不会执行，仅仅返回一个生成器对象，当对这个对象调用next()(python3中是__next__())或者进行for循环时，才开始执行。
