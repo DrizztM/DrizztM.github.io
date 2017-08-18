@@ -2,7 +2,7 @@
 layout: post
 title: 解决mindmanager已停止工作的问题
 category: 技术
-keywords: java
+keywords: 工具
 ---
 
 1. 把文件后缀 mmap修改为 zip。
