@@ -241,6 +241,8 @@ make
 
 make install
 
+cd src
+
 cp redis-server /usr/local/bin/
 
 cp redis-cli  /usr/local/bin
