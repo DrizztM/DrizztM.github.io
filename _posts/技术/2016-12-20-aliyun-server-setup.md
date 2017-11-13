@@ -239,11 +239,11 @@ cd redis-3.2.6
 
 make
 
-如果make报错：“make[3]: gcc：命令未找到”，执行：
+如果make报错：<font color="blue">make[3]: gcc：命令未找到</font>，执行：
 
 yum -y install gcc-c++
 
-如果make报错：“zmalloc.h:50:31: 错误：jemalloc/jemalloc.h：没有那个文件或目录”，执行：
+如果make报错：<font color="blue">zmalloc.h:50:31: 错误：jemalloc/jemalloc.h：没有那个文件或目录</font>，执行：
 
 make MALLOC=libc
 
