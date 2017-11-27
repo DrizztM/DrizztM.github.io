@@ -8,12 +8,12 @@ keywords: server
 采用流处理的方式，直接调用MultipartFile的getInputStream方法即可。
 ``` java
 BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()));
-		try {
-			String read = null;
-			while ((read = br.readLine()) != null) {
-				result = result + read + "\r\n";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
+try {
+	String read = null;
+	while ((read = br.readLine()) != null) {
+		result = result + read + "\r\n";
+	}
+} catch (Exception e) {
+	e.printStackTrace();
+} 
 ```
